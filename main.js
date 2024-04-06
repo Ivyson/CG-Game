@@ -93,25 +93,26 @@ let fsShader = `
     }
 `;
 
-let vShder = compileShader(webgl, vsShader, webgl.VERTEX_SHADER);
 let fShader = compileShader(webgl, fsShader, webgl.FRAGMENT_SHADER);
+
+let xvalue = 0;
+function draw() {
+    webgl.clear(webgl.COLOR_BUFFER_BIT);
+    drawCircle();
+    let vShder = compileShader(webgl, vsShader, webgl.VERTEX_SHADER);
 let program = createProgram(webgl, vShder, fShader);
 let Position = webgl.getAttribLocation(program, "vecposition");
 let ymove = webgl.getUniformLocation(program, "xmovement");
 webgl.enableVertexAttribArray(Position);
-webgl.vertexAttribPointer(Position, 2, webgl.FLOAT, false, 0, 0);
-let xvalue = 0;
-function draw() {
-  //   webgl.clear(webgl.COLOR_BUFFER_BIT);
-  //   drawCircle();
-  //   drawCircle();
+webgl.vertexAttribPointer(Position, 2, webgl.FLOAT, false, 0, 0); 
   webgl.enableVertexAttribArray(Position);
   webgl.vertexAttribPointer(Position, 2, webgl.FLOAT, false, 0, 0);
-  webgl.bindBuffer(webgl.ARRAY_BUFFER, buffer);
   webgl.useProgram(program);
+  webgl.bindBuffer(webgl.ARRAY_BUFFER, buffer);
   webgl.uniform1f(ymove, xvalue);
   webgl.drawArrays(webgl.TRIANGLE_STRIP, 0, 4);
-  //   window.requestAnimationFrame(draw);
+  window.requestAnimationFrame(draw);
+//   drawCircle();
 }
 document.addEventListener("keydown", (event) => {
   if (event.key === "ArrowLeft" && xvalue > -0.8) {
@@ -122,7 +123,7 @@ document.addEventListener("keydown", (event) => {
   console.log(xvalue);
 });
 
-let circlebuffer = Buffer(new Float32Array(cvertices));
+
 let cvVertices = `
 precision mediump float;
 attribute vec2 pos;
@@ -133,19 +134,20 @@ void main()
     gl_Position = vec4(0.2*pos+shift, 0.0, 1.0);
 }
 `;
-let myShader = compileShader(webgl, cvVertices, webgl.VERTEX_SHADER);
-let cProgram = createProgram(webgl, myShader, fShader);
-let cPosition = webgl.getAttribLocation(cProgram, "pos");
-webgl.enableVertexAttribArray(cPosition);
-webgl.vertexAttribPointer(cPosition, 2, webgl.FLOAT, false, 0, 0);
 
-let circloc = webgl.getUniformLocation(cProgram, "shift");
 let xcirc = 0,
   ycirc = 0;
 let indexmovex = Math.random() * 0.02;
 let indexmovey = 0.01;
 let timegame = 0;
 function drawCircle() {
+    let circlebuffer = Buffer(new Float32Array(cvertices));
+    let myShader = compileShader(webgl, cvVertices, webgl.VERTEX_SHADER);
+let cProgram = createProgram(webgl, myShader, fShader);
+let cPosition = webgl.getAttribLocation(cProgram, "pos");
+webgl.enableVertexAttribArray(cPosition);
+webgl.vertexAttribPointer(cPosition, 2, webgl.FLOAT, false, 0, 0);
+let circloc = webgl.getUniformLocation(cProgram, "shift");
   webgl.uniform2f(circloc, xcirc, ycirc);
   webgl.drawArrays(webgl.TRIANGLE_FAN, 0, 120);
   xcirc += indexmovex;
@@ -168,5 +170,12 @@ function drawCircle() {
   }
   requestAnimationFrame(drawCircle);
 }
-drawCircle();
+// drawCircle();
 draw();
+// let vShder = compileShader(webgl, vsShader, webgl.VERTEX_SHADER);
+// let fShader = compileShader(webgl, fsShader, webgl.FRAGMENT_SHADER);
+// let program = createProgram(webgl, vShder, fShader);
+// let Position = webgl.getAttribLocation(program, "vecposition");
+// let ymove = webgl.getUniformLocation(program, "xmovement");
+// webgl.enableVertexAttribArray(Position);
+// webgl.vertexAttribPointer(Position, 2, webgl.FLOAT, false, 0, 0);
