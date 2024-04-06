@@ -1,3 +1,4 @@
+// import {drawCircle} from "./circledrawing.js";
 let webgl;
 let canvas;
 function createCanvas() {
@@ -12,16 +13,26 @@ function createCanvas() {
   webgl = canvas.getContext("webgl");
   //   webgl.viewport(0, 0, canvas.style.width, canvas.sy height);
   webgl.clearColor(0.0, 0.0, 0.0, 1.0);
-  webgl.clear(webgl.COLOR_BUFFER_BIT);
+  //   webgl.clear(webgl.COLOR_BUFFER_BIT);
 }
 window.addEventListener("resize", () => {
   canvas.style.height = window.innerHeight + "px";
   canvas.style.width = window.innerWidth - 10 + "px";
 });
 let vertices = new Float32Array([-0.1, -0.95, 0.1, -0.95, -0.1, -1.0, 0.1, -1]);
+let theta = 2 * Math.PI;
+  let segments = 60;
+  let x, y;
+  let cvertices = [];
+  for (let i = 0; i < segments; i += theta / segments) {
+    x = 0.1 * Math.cos(i);
+    y = 0.1 * Math.sin(i);
+    // console.log(cvertices);
+    cvertices.push(x, y);
+  }
 createCanvas();
 webgl.enable(webgl.DEPTH_TEST);
-function Buffer() {
+function Buffer(vertices) {
   console.log(webgl);
   let buffer = webgl.createBuffer();
   console.log(buffer, "Hello");
@@ -64,7 +75,7 @@ function createProgram(webgl, vertexShader, fragmentShader) {
   webgl.useProgram(program);
   return program;
 }
-let buffer = Buffer();
+let buffer = Buffer(vertices);
 let vsShader = `
     uniform float xmovement;
     attribute vec2 vecposition;
@@ -92,6 +103,10 @@ webgl.vertexAttribPointer(Position, 2, webgl.FLOAT, false, 0, 0);
 let xvalue = 0;
 function draw() {
   webgl.clear(webgl.COLOR_BUFFER_BIT);
+  //   drawCircle();
+  //   drawCircle();
+  webgl.bindBuffer(webgl.ARRAY_BUFFER, buffer);
+  webgl.useProgram(program);
   webgl.uniform1f(ymove, xvalue);
   webgl.drawArrays(webgl.TRIANGLE_STRIP, 0, 4);
   window.requestAnimationFrame(draw);
