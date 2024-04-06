@@ -6,17 +6,19 @@ function createCanvas() {
     canvas = document.createElement("canvas");
     document.body.appendChild(canvas);
   }
-  canvas.style.height = window.innerHeight - 3.29 + "px";
-  canvas.style.width = window.innerWidth - 1 + "px";
-  canvas.style.backgroundColor = "yellow";
+  canvas.style.height = window.innerHeight + "px";
+  canvas.style.width = window.innerWidth + 1 + "px";
+  canvas.style.backgroundColor = "black";
   webgl = canvas.getContext("webgl");
-  webgl.viewport(0, 0, canvas.width, canvas.height);
+  //   webgl.viewport(0, 0, canvas.style.width, canvas.sy height);
+  webgl.clearColor(0.0, 0.0, 0.0, 1.0);
+  webgl.clear(webgl.COLOR_BUFFER_BIT);
 }
 window.addEventListener("resize", () => {
   canvas.style.height = window.innerHeight + "px";
   canvas.style.width = window.innerWidth - 10 + "px";
 });
-let vertices = new Float32Array([-0.2, -0.85, 0.2, -0.85]);
+let vertices = new Float32Array([-0.2, -0.95, 0.2, -0.95, -0.2, -1.0, 0.2, -1]);
 createCanvas();
 webgl.enable(webgl.DEPTH_TEST);
 function Buffer() {
@@ -64,17 +66,19 @@ function createProgram(webgl, vertexShader, fragmentShader) {
 }
 let buffer = Buffer();
 let vsShader = `
+    uniform float xmovement;
     attribute vec2 vecposition;
+
     void main()
     {
-        gl_Position = vec4(vecposition, 0.9, 1.0);
+        gl_Position = vec4(vecposition.x + xmovement, vecposition.y, 0.9, 1.0);
     }
 `;
 let fsShader = `
     precision mediump float;
     void main()
     {
-        gl_FragColor = vec4(0.0, 0.0, 0.0, 1.0);
+        gl_FragColor = vec4(1.0, 1.0, 1.0, 1.0);
     }
 `;
 
@@ -82,6 +86,22 @@ let vShder = compileShader(webgl, vsShader, webgl.VERTEX_SHADER);
 let fShader = compileShader(webgl, fsShader, webgl.FRAGMENT_SHADER);
 let program = createProgram(webgl, vShder, fShader);
 let Position = webgl.getAttribLocation(program, "vecposition");
+let ymove = webgl.getUniformLocation(program, "xmovement");
 webgl.enableVertexAttribArray(Position);
 webgl.vertexAttribPointer(Position, 2, webgl.FLOAT, false, 0, 0);
-webgl.drawArrays(webgl.LINES, 0, 2);
+let xvalue = 0;
+function draw() {
+  webgl.clear(webgl.COLOR_BUFFER_BIT);
+  webgl.uniform1f(ymove, xvalue);
+  webgl.drawArrays(webgl.TRIANGLE_STRIP, 0, 4);
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "ArrowLeft" && xvalue > -0.8) {
+      xvalue -= 0.001;
+    } else if (event.key === "ArrowRight" && xvalue < 0.8) {
+      xvalue = 0.001;
+    }
+  });
+  window.requestAnimationFrame(draw);
+}
+
+draw();
