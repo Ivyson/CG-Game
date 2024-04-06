@@ -18,7 +18,7 @@ window.addEventListener("resize", () => {
   canvas.style.height = window.innerHeight + "px";
   canvas.style.width = window.innerWidth - 10 + "px";
 });
-let vertices = new Float32Array([-0.2, -0.95, 0.2, -0.95, -0.2, -1.0, 0.2, -1]);
+let vertices = new Float32Array([-0.1, -0.95, 0.1, -0.95, -0.1, -1.0, 0.1, -1]);
 createCanvas();
 webgl.enable(webgl.DEPTH_TEST);
 function Buffer() {
@@ -94,14 +94,14 @@ function draw() {
   webgl.clear(webgl.COLOR_BUFFER_BIT);
   webgl.uniform1f(ymove, xvalue);
   webgl.drawArrays(webgl.TRIANGLE_STRIP, 0, 4);
-  document.addEventListener("keydown", (event) => {
-    if (event.key === "ArrowLeft" && xvalue > -0.8) {
-      xvalue -= 0.001;
-    } else if (event.key === "ArrowRight" && xvalue < 0.8) {
-      xvalue = 0.001;
-    }
-  });
   window.requestAnimationFrame(draw);
 }
-
+document.addEventListener("keydown", (event) => {
+  if (event.key === "ArrowLeft" && xvalue > -0.8) {
+    xvalue -= 0.1;
+  } else if (event.key === "ArrowRight" && xvalue < 0.8) {
+    xvalue += 0.1;
+  }
+  console.log(xvalue);
+});
 draw();
