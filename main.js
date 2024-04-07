@@ -77,6 +77,7 @@ function createProgram(webgl, vertexShader, fragmentShader) {
 }
 let buffer = Buffer(vertices);
 let vsShader = `
+    precision highp float;
     uniform float xmovement;
     attribute vec2 vecposition;
 
@@ -86,46 +87,42 @@ let vsShader = `
     }
 `;
 let fsShader = `
-    precision mediump float;
+    precision highp float;
     void main()
     {
         gl_FragColor = vec4(1.0, 1.0, 1.0, 1.0);
     }
 `;
 
+let vShder = compileShader(webgl, vsShader, webgl.VERTEX_SHADER);
 let fShader = compileShader(webgl, fsShader, webgl.FRAGMENT_SHADER);
-
-let xvalue = 0;
-function draw() {
-    webgl.clear(webgl.COLOR_BUFFER_BIT);
-    drawCircle();
-    let vShder = compileShader(webgl, vsShader, webgl.VERTEX_SHADER);
 let program = createProgram(webgl, vShder, fShader);
 let Position = webgl.getAttribLocation(program, "vecposition");
 let ymove = webgl.getUniformLocation(program, "xmovement");
 webgl.enableVertexAttribArray(Position);
-webgl.vertexAttribPointer(Position, 2, webgl.FLOAT, false, 0, 0); 
-  webgl.enableVertexAttribArray(Position);
-  webgl.vertexAttribPointer(Position, 2, webgl.FLOAT, false, 0, 0);
+webgl.vertexAttribPointer(Position, 2, webgl.FLOAT, false, 0, 0);
+let xvalue = 0;
+function draw() {
+  webgl.clear(webgl.COLOR_BUFFER_BIT);
   webgl.useProgram(program);
   webgl.bindBuffer(webgl.ARRAY_BUFFER, buffer);
+  webgl.enableVertexAttribArray(Position);
+  webgl.vertexAttribPointer(Position, 2, webgl.FLOAT, false, 0, 0);
   webgl.uniform1f(ymove, xvalue);
   webgl.drawArrays(webgl.TRIANGLE_STRIP, 0, 4);
-  window.requestAnimationFrame(draw);
-//   drawCircle();
 }
 document.addEventListener("keydown", (event) => {
-  if (event.key === "ArrowLeft" && xvalue > -0.8) {
+  if (event.key === "ArrowLeft" && xvalue > -0.9) {
     xvalue -= 0.1;
-  } else if (event.key === "ArrowRight" && xvalue < 0.8) {
+  } else if (event.key === "ArrowRight" && xvalue < 0.9) {
     xvalue += 0.1;
   }
   console.log(xvalue);
 });
 
-
+let circlebuffer = Buffer(new Float32Array(cvertices));
 let cvVertices = `
-precision mediump float;
+precision highp float;
 attribute vec2 pos;
 uniform vec2 shift;
 uniform mat4 translate;
@@ -134,21 +131,23 @@ void main()
     gl_Position = vec4(0.2*pos+shift, 0.0, 1.0);
 }
 `;
+let myShader = compileShader(webgl, cvVertices, webgl.VERTEX_SHADER);
+let cProgram = createProgram(webgl, myShader, fShader);
+let cPosition = webgl.getAttribLocation(cProgram, "pos");
+webgl.enableVertexAttribArray(cPosition);
+webgl.vertexAttribPointer(cPosition, 2, webgl.FLOAT, false, 0, 0);
 
+let circloc = webgl.getUniformLocation(cProgram, "shift");
 let xcirc = 0,
   ycirc = 0;
 let indexmovex = Math.random() * 0.02;
 let indexmovey = 0.01;
 let timegame = 0;
 function drawCircle() {
-    let circlebuffer = Buffer(new Float32Array(cvertices));
-    let myShader = compileShader(webgl, cvVertices, webgl.VERTEX_SHADER);
-let cProgram = createProgram(webgl, myShader, fShader);
-let cPosition = webgl.getAttribLocation(cProgram, "pos");
-webgl.enableVertexAttribArray(cPosition);
-webgl.vertexAttribPointer(cPosition, 2, webgl.FLOAT, false, 0, 0);
-let circloc = webgl.getUniformLocation(cProgram, "shift");
+  webgl.useProgram(cProgram);
+  webgl.bindBuffer(webgl.ARRAY_BUFFER, circlebuffer);
   webgl.uniform2f(circloc, xcirc, ycirc);
+  webgl.vertexAttribPointer(cPosition, 2, webgl.FLOAT, false, 0, 0);
   webgl.drawArrays(webgl.TRIANGLE_FAN, 0, 120);
   xcirc += indexmovex;
   ycirc += indexmovey;
@@ -168,14 +167,11 @@ let circloc = webgl.getUniformLocation(cProgram, "shift");
     indexmovex *= 2;
     indexmovey *= 2;
   }
-  requestAnimationFrame(drawCircle);
 }
-// drawCircle();
-draw();
-// let vShder = compileShader(webgl, vsShader, webgl.VERTEX_SHADER);
-// let fShader = compileShader(webgl, fsShader, webgl.FRAGMENT_SHADER);
-// let program = createProgram(webgl, vShder, fShader);
-// let Position = webgl.getAttribLocation(program, "vecposition");
-// let ymove = webgl.getUniformLocation(program, "xmovement");
-// webgl.enableVertexAttribArray(Position);
-// webgl.vertexAttribPointer(Position, 2, webgl.FLOAT, false, 0, 0);
+
+function animate() {
+  draw(); //This is for sketching the paddle
+  drawCircle(); //For circle drawing.
+  requestAnimationFrame(animate);
+}
+animate();
