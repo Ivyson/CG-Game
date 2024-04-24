@@ -1,0 +1,73 @@
+.body {
+    background: black;
+    width: 100%;
+    height: 100%
+}
+
+.logo-div {
+    height: 10%;
+}
+
+.logo {
+    height: 150px;
+    width: 500px;
+}
+
+.welcome-screen {
+    /* font-family: TSCu_Comic, sans-serif; */
+    display: block;
+    color: #ffffff;
+    width: 80%;
+    height: 80%;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.welcome-spawn {
+    font-size: 100%;
+}
+
+.start-button {
+    font-family: TSCu_Comic, sans-serif;
+    font-size: 25px;
+    color: rgb(255, 255, 255);
+}
+
+.game-window {
+    display: none;
+    width: 100%;
+    height: 90%;
+}
+
+.game-canvas {
+    border: none;
+    width: auto;
+    height: 80%;
+}
+
+.remainingLives {
+    color: #ff0000;
+    width: auto;
+    height: 5%;
+    font-size: 100%;
+}
+
+.super-mode {
+    color: #0000ff;
+    width: auto;
+    height: 5%;
+    font-size: 100%;
+}
+
+.result, .score {
+    color: #ffff00;
+    width: auto;
+    height: 5%;
+    font-size: 100%;
+}
+
+.result-button {
+    display: none;
+    height: 5%;
+    font-size: 100%;
+}
