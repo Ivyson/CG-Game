@@ -8,7 +8,7 @@
 </head>
 
 <body class="body">
-<div class="logo-div" align="center">
+<div class="logo-div" >
     <img class="logo" src="assets/164495.gif" alt=""/>
 </div>
 
@@ -29,73 +29,32 @@
     <br/>
 </div>
 
-<div class="game-window" id="game" align="center">
+<div class="game-window" id="game">
     <h3 class="score" id="score"></h3>
     <h3 class="remainingLives" id="remainingLives"></h3>
     <canvas class="game-canvas" id="my-canvas" width="800" height="512"></canvas>
     <div class="logbox">
-    <h1 class="super-mode" id="super-mode"></h1>
+    <!-- <h1 class="super-mode" id="super-mode"></h1> -->
     <h2 class="result" id="result"></h2>
     </div>
     <button class="result-button" id="restart" type="button" onclick="restartGame()">Restart Game</button>
 </div>
-
+<script src ="pacmanHelpers/webhandle.js"></script>
 </body>
-
-<script id="shader-vs" type="x-shader/x-vertex">
-    precision highp float;
-    attribute vec3 aVertexPosition;
-    attribute vec2 aTextureCoord;
-    uniform mat4 uMVMatrix;
-    uniform mat4 uPMatrix;
-    varying vec2 vTextureCoord;
-    void main(void) {
-        // And multiplying by the Projection and the Model-View matrix
-
-        gl_Position = uPMatrix * uMVMatrix *vec4(aVertexPosition, 1.0);
-        vTextureCoord = aTextureCoord;
-
-    }
-
-</script>
-
-<script id="shader-fs" type="x-shader/x-fragment">
-
-    // Set precision to highp for precsice rendering
-    precision highp float;
-    // Varying variables
-    varying vec2 vTextureCoord;
-    // Texture sampler
-    uniform sampler2D uSampler;
-
-    void main(void) {
-       
-        gl_FragColor = texture2D(uSampler,vTextureCoord);
-    }
-
-
-</script>
-
 <!-- Some useful functions for browser compatibility -->
 
-<script type="text/javascript" src="utils/webgl-utils.js"></script>
-
-<!-- Handling vectors and matrices -->
-
+<!-- <script type="text/javascript" src="utils/webgl-utils.js"></script>
+    Handling vectors and matrices 
 <script type="text/javascript" src="utils/maths.js"></script>
 
-<!-- Creating the light sources -->
-
-<!-- <script type="text/javascript" src="utils/lightSources.js"></script> -->
-
-<!-- WebGL code -->
+ WebGL code 
 
 <script type="text/javascript" src="utils/initShaders.js"></script>
-<!-- <script src="pacmanHelpers/webhandle.js"></script> -->
+ <script src="pacmanHelpers/webhandle.js"></script> 
 
 <script type="text/javascript" src="pacmanLogic.js"></script>
 <script type="text/javascript" src="pacmanHelpers/pacmanRender.js"></script>
 <script type="text/javascript" src="pacmanHelpers/pacmanDrawing.js"></script>
 <script type="text/javascript" src="pacmanHelpers/pacmanField.js"></script>
-<script type="text/javascript" src="pacmanHelpers/pacmanMovements.js"></script>
+<script type="text/javascript" src="pacmanHelpers/pacmanMovements.js"></script> -->
 </html>

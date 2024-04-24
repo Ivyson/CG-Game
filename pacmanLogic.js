@@ -304,4 +304,4 @@ function runWebGL() {
     initTextures();
 }
 
-window.onload = runWebGL;
+window.onload = runWebGL();
