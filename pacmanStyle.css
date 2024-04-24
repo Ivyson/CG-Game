@@ -111,10 +111,12 @@
 .result-button {
     display: block;
     padding: 10px 10px;
-    border-radius:25px 25px;
+    border-radius: 25px 25px;
     height: 5%;
     font-size: 100%;
     margin: 3% 10%;
+    font-family: 'Times New Roman', Times, serif;
+    border: solid rgb(240, 243, 41) 2px;
 }
 .logbox{
     
