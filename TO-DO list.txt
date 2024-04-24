@@ -1,0 +1,13 @@
+1 Fix the lighting
+2. Fix the sounds
+3. Use a constant color to get rid of the redness on the super mode
+4. Have a vertex shader on its separate file or folder
+5. Fix the folder system
+6. Have you own files that have the same functionality as the webutils
+7. Use a different Picture of pacman and ghosts
+8. Clean Up the code and make your own comments
+9. Try to rotate the pacman avatar according to the movement of choice
+10. Ensure that the pacman gif dissapears when game is active       ----Done----
+Uncaught ReferenceError: initShaders is not defined
+    at initCanvas (pacmanLogic.js:315:5)
+    at runWebGL (pacmanLogic.js:320:5)

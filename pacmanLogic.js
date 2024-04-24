@@ -7,9 +7,9 @@ let cubeVertexIndexBuffer = null;
 let cubeVertexNormalBuffer = null;
 
 // Global transformations parameters
-let globalTz = -28.0;
-let globalXX = 60.0;
-let globalYY = 0.0;
+let globalTz = -30.0;
+let globalXX = -270.0;
+let globalYY = -1441;
 
 // Local transformation parameters
 
@@ -53,7 +53,7 @@ function initWebGL(canvas) {
 
     // Set viewport to canvas size with black background
     gl.viewport(0, 0, canvas.width, canvas.height);
-    gl.clearColor(0.0, 0.0, 0.0, 1.0);
+    gl.clearColor(0.0, 0.0, 0.0, 0.0);
 
     // Enable face culling and depth test
     gl.enable(gl.CULL_FACE);
@@ -148,45 +148,45 @@ function restartGame() {
     superMode = false;
 }
 
-function enableSuperModeEnv() {
+// function enableSuperModeEnv() {
 
-    // Enable super mode timer
-    interval = setInterval(function () {
-        counter--;
-        if (counter === 0) {
-            superMode = false;
-            switchSuperModeLight(false);
-            // Set normal light threshold again
-            gl.uniform1f(gl.getUniformLocation(shaderProgram, "threshold"), threshold);
+//     // Enable super mode timer
+//     interval = setInterval(function () {
+//         counter--;
+//         if (counter === 0) {
+//             superMode = false;
+//             switchSuperModeLight(false);
+//             // Set normal light threshold again
+//             gl.uniform1f(gl.getUniformLocation(shaderProgram, "threshold"), threshold);
 
-            // Respawn dead ghosts
-            // for (let i = 0; i < deadGhosts.length; i++)
-            //     ghosts.push(deadGhosts[i]);
-            ghosts = ghosts.concat(deadGhosts);
-            deadGhosts = [];
+//             // Respawn dead ghosts
+//             // for (let i = 0; i < deadGhosts.length; i++)
+//             //     ghosts.push(deadGhosts[i]);
+//             ghosts = ghosts.concat(deadGhosts);
+//             deadGhosts = [];
 
-            document.getElementById('super-mode').innerHTML = "";
-            clearInterval(interval);
+//             document.getElementById('super-mode').innerHTML = "";
+//             clearInterval(interval);
 
-        } else
-            document.getElementById('super-mode').innerHTML = "SUPER MODE ending in " + counter + " seconds";
-    }, 1000);
-}
+//         } else
+//             document.getElementById('super-mode').innerHTML = "SUPER MODE ending in " + counter + " seconds";
+//     }, 1000);
+// }
 
 function animate() {
     const timeNow = new Date().getTime();
 
-    if (lastTime !== 0) {
-        const elapsed = timeNow - lastTime;
+    // if (lastTime !== 0) {
+        // const elapsed = timeNow - lastTime;
 
         // Rotate the light sources
-        lightSources.map(lightSource => {
-            if (lightSource.isRotZZOn()) {
-                const angle = lightSource.getRotAngleZZ() + lightSource.getRotationSpeed() * (90 * elapsed) / 1000.0;
-                lightSource.setRotAngleZZ(angle);
-            }
-        });
-    }
+        // lightSources.map(lightSource => {
+        //     if (lightSource.isRotZZOn()) {
+        //         const angle = lightSource.getRotAngleZZ() + lightSource.getRotationSpeed() * (90 * elapsed) / 1000.0;
+        //         lightSource.setRotAngleZZ(angle);
+        //     }
+        // });
+    // }
 
     lastTime = timeNow;
 }
@@ -209,33 +209,6 @@ async function tick() {
 }
 
 function setEventListeners() {
-    let moving = false;
-    let xPos = 0;
-    let yPos = 0;
-
-    // Handle yys rotation with mouse movement
-    document.addEventListener('mousedown', event => {
-        xPos = event.pageX;
-        yPos = event.pageY;
-        moving = true;
-    });
-
-    document.addEventListener('mousemove', event => {
-        if (moving) {
-            globalYY -= (xPos - event.pageX) * 0.01;
-            globalXX -= (yPos - event.pageY) * 0.01;
-            drawScene();
-        }
-    });
-
-    document.addEventListener('mouseup', () => moving = false);
-
-    // Handle zoom with mouse scroll
-    document.addEventListener('wheel', event => {
-        globalTz += event.deltaY > 0 ? 1 : -1;
-        drawScene();
-    });
-
     // Pacman Movement
     document.addEventListener('keydown', event => {
         // Getting the pressed key
@@ -245,9 +218,12 @@ function setEventListeners() {
         if (gameOver) key = -1;
 
         switch (key) {
-            // Space
-            case 32:
-                if (!started) setGameScreen();
+            // Enter key
+            case 13:
+                if (!started) {
+                    setGameScreen();
+                    removeImage();
+            }
                 else pauseOrContinuousGame();
                 break;
             // Left
@@ -266,26 +242,6 @@ function setEventListeners() {
             case 40 :
                 pacman.updateDirection(0, 1, key);
                 break;
-            // A
-            case 65:
-                globalYY -= 5.0;
-                drawScene();
-                break;
-            // D
-            case 68:
-                globalYY += 5.0;
-                drawScene();
-                break;
-            // S
-            case 83:
-                globalXX += 5.0;
-                drawScene();
-                break;
-            // W
-            case 87:
-                globalXX -= 5.0;
-                drawScene();
-                break;
         }
     });
 }
@@ -293,17 +249,15 @@ function setEventListeners() {
 function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
+function removeImage(){
+    let image = document.querySelector('img');
+    image.style.display = 'none';
+}
 
 function setGameScreen() {
     // Game is running
     started = true;
-    remainingLives = 3;
-
-    // Set game difficulty (0 to normal, 1 to hard)
-    difficulty = 0;
-    gl.uniform1i(gl.getUniformLocation(shaderProgram, 'difficulty'), difficulty);
-    gl.uniform1f(gl.getUniformLocation(shaderProgram, 'threshold'), threshold);
-
+    remainingLives = 5;
     // Set game screen
     document.querySelector('#welcome-screen').style.display = 'none';
     document.querySelector('#game').style.display = 'block';
@@ -312,7 +266,6 @@ function setGameScreen() {
     initField();
     // Play intro sound
     introSound.play();
-
     // Start models animation and movements
     tick();
 }

@@ -14,7 +14,6 @@ function drawModel(angleXX, angleYY, angleZZ,
     mvMatrix = mult(mvMatrix, scalingMatrix(sx, sy, sz));
 
     // Passing the Model View Matrix to apply the current transformation
-
     const mvUniform = gl.getUniformLocation(shaderProgram, "uMVMatrix");
     gl.uniformMatrix4fv(mvUniform, false, new Float32Array(flatten(mvMatrix)));
 
@@ -26,9 +25,6 @@ function drawModel(angleXX, angleYY, angleZZ,
     gl.bindBuffer(gl.ARRAY_BUFFER, cubeVertexTextureCoordBuffer);
     gl.vertexAttribPointer(shaderProgram.textureCoordAttribute, cubeVertexTextureCoordBuffer.itemSize, gl.FLOAT, false, 0, 0);
 
-    gl.bindBuffer(gl.ARRAY_BUFFER, cubeVertexNormalBuffer);
-    gl.vertexAttribPointer(shaderProgram.vertexNormalAttribute, cubeVertexNormalBuffer.itemSize, gl.FLOAT, false, 0, 0);
-
     // Material properties
 
     gl.uniform3fv(gl.getUniformLocation(shaderProgram, "k_ambient"), flatten(kAmbi));
@@ -38,12 +34,12 @@ function drawModel(angleXX, angleYY, angleZZ,
 
     // Light Sources
 
-    gl.uniform1i(gl.getUniformLocation(shaderProgram, "numLights"), lightSources.length);
+    // gl.uniform1i(gl.getUniformLocation(shaderProgram, "numLights"), lightSources.length);
 
-    for (let i = 0; i < lightSources.length; i++) {
-        gl.uniform4fv(gl.getUniformLocation(shaderProgram, "allLights[" + String(i) + "].position"), flatten(lightSources[i].getPosition()));
-        gl.uniform3fv(gl.getUniformLocation(shaderProgram, "allLights[" + String(i) + "].intensities"), flatten(lightSources[i].getIntensity()));
-    }
+    // for (let i = 0; i < lightSources.length; i++) {
+    //     gl.uniform4fv(gl.getUniformLocation(shaderProgram, "allLights[" + String(i) + "].position"), flatten(lightSources[i].getPosition()));
+    //     gl.uniform3fv(gl.getUniformLocation(shaderProgram, "allLights[" + String(i) + "].intensities"), flatten(lightSources[i].getIntensity()));
+    // }
 
     // Apply textures
 
@@ -86,23 +82,20 @@ function drawScene() {
     mvMatrix = mult(mvMatrix, rotationXXMatrix(globalXX));
 
     // Updating the position of the light sources, if required
-    for (i = 0; i < lightSources.length; i++) {
-        if (lightSources[i].isOff())
-            continue;
+    // for (i = 0; i < lightSources.length; i++) {
+        // if (lightSources[i].isOff())
+        //     continue;
 
-        // Adjust light position based on pacman position, in hard mode
-        if (difficulty)
-            lightSources[i].setPosition(pacman.x - (field.width / 2), 2.5, pacman.z - (field.height / 2), 1.0);
 
-        // Animating the light source, if defined
-        let lightSourceMatrix = mvMatrix;
-        if (lightSources[i].isRotZZOn())
-            lightSourceMatrix = mult(lightSourceMatrix, rotationZZMatrix(lightSources[i].getRotAngleZZ()));
+        // // Animating the light source, if defined
+        // let lightSourceMatrix = mvMatrix;
+        // if (lightSources[i].isRotZZOn())
+        //     lightSourceMatrix = mult(lightSourceMatrix, rotationZZMatrix(lightSources[i].getRotAngleZZ()));
 
-        // Passing the Light Source Matrix to apply
-        const lsmUniform = gl.getUniformLocation(shaderProgram, "allLights[" + String(i) + "].lightSourceMatrix");
-        gl.uniformMatrix4fv(lsmUniform, false, new Float32Array(flatten(lightSourceMatrix)));
-    }
+        // // Passing the Light Source Matrix to apply
+        // const lsmUniform = gl.getUniformLocation(shaderProgram, "allLights[" + String(i) + "].lightSourceMatrix");
+        // gl.uniformMatrix4fv(lsmUniform, false, new Float32Array(flatten(lightSourceMatrix)));
+    // }
 
     // Draw models
 

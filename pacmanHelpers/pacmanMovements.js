@@ -222,10 +222,10 @@ function handlePortal(ghost) {
         spawnInRandomPortal(ghost);
     }
 }
-
+//The speed of the ghost is supposed to be shalf compared to the avar
 function moveGhostInCurrentDirection(ghost) {
-    ghost.x += ghost.xDirection * field.speed;
-    ghost.z += ghost.zDirection * field.speed;
+    ghost.x += ghost.xDirection * (field.speed/2) ;
+    ghost.z += ghost.zDirection * (field.speed/2);
 }
 
 function spawnInRandomPortal(character) {

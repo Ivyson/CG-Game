@@ -19,6 +19,7 @@ function getShader(gl, id) {
 
     let str = "";
     let k = shaderScript.firstChild;
+    console.log(k);
     while (k) {
         if (k.nodeType === 3) {
             str += k.textContent;
@@ -46,9 +47,7 @@ function getShader(gl, id) {
     return shader;
 }
 
-//----------------------------------------------------------------------------
-
-// Initializing the shader program
+// Defining the shader program
 
 function initShaders(gl) {
     let fragmentShader = getShader(gl, "shader-fs");
@@ -79,16 +78,5 @@ function initShaders(gl) {
 
     shaderProgram.pMatrixUniform = gl.getUniformLocation(shaderProgram, "uPMatrix");
     shaderProgram.mvMatrixUniform = gl.getUniformLocation(shaderProgram, "uMVMatrix");
-
-    // The sampler
-
-    shaderProgram.vertexNormalAttribute = gl.getAttribLocation(shaderProgram, "vNormal");
-    gl.enableVertexAttribArray(shaderProgram.vertexNormalAttribute);
-
-    // Colors
-
-    // shaderProgram.vertexColorAttribute = gl.getAttribLocation(shaderProgram, "aVertexColor");
-    // gl.enableVertexAttribArray(shaderProgram.vertexColorAttribute);
-
     return shaderProgram;
 }
