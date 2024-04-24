@@ -127,13 +127,13 @@ const pos_Viewer = [0.0, 0.0, 0.0, 1.0];
 // const kAmbi = [0.8, 0.8, 0.8];
 
 // Diffuse coef.
-const kDiff = [0.8, 0.8, 0.8];
+// const kDiff = [0.8, 0.8, 0.8];
 
 // Specular coef.
-const kSpec = [0.7, 0.7, 0.7];
+// const kSpec = [0.7, 0.7, 0.7];
 
 // Phong coef.
-const nPhong = 100;
+// const nPhong = 100;
 
 
 function initCubeBuffer() {
@@ -188,7 +188,7 @@ function initTextures() {
     wallTexture = createTextureWithAsset("assets/bounds-copy.jpg")
 
     // Food texture
-    foodTexture = createTextureWithAsset("assets/Ball-copy1.png");
+    foodTexture = createTextureWithAsset("assets/yellow-sphere.png");
 
     // Super food texture
     superFoodTexture = createTextureWithAsset("assets/Ball-copy1.png");
