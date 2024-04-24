@@ -2,7 +2,6 @@ let vertexSource = '';
 let fragmentSource = '';
 
 async function fetchShaders() {
-    try {
         const responseVs = await fetch('pacmanHelpers/vsShader.shader');
         if (!responseVs.ok) {
             throw new Error('No vs Shader Found');
@@ -16,9 +15,13 @@ async function fetchShaders() {
         }
         fragmentSource = await responseFs.text();
         console.log(fragmentSource, "Is Fragment");
-    } catch (error) {
-        console.error('Error fetching shaders:', error.message);
-    }
-}
 
-fetchShaders();
+}
+try{
+  fetchShaders();
+}
+catch(error)
+{
+  console.error('Error fetching shaders:', error.message);
+}
+// console.log('Fragment Shader',fragmentSource, "vsShader:",vertexSource);
