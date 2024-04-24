@@ -71,19 +71,24 @@
 }
 .game-window {
     display: none;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    /* position: absolute; */
+    /* top: 50%; */
+    /* left: 50%; */
+    /* transform: translate(-50%, -50%); */
     width: 100%;
     height: 90%;
-    justify-content: center;
-    align-items: center;
+    /* justify-content: center;
+    align-items: center; */
+    /* border: 2px red solid; */
 }
 
 .game-canvas {
     border: none;
     width: auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     height: 100%;
 }
 
@@ -99,6 +104,7 @@
     width: auto;
     height: 3%;
     font-size: 100%;
+    margin: 3% 10%;  
     /* border: 2px red solid; */
 }
 
@@ -106,10 +112,11 @@
     display: none;
     height: 5%;
     font-size: 100%;
+    margin: 3% 10%;
 }
 .logbox{
     
-    border: rgb(252, 248, 2) 5px solid;
+    /* border: rgb(252, 248, 2) 5px solid; */
     background-color: rgb(0, 0, 0);
     width: 600px ;
     border-radius: 25px 25px;
