@@ -16,9 +16,9 @@ Begin by cloning the repository to your local environment: `git clone https://gi
 This project is part of the Computer Graphics course at Cape Peninsula University of Technology. Given the limited time for completion, there may be bugs, and improvements are welcome. Contributing to open-source projects is a great learning opportunity, so your input is invaluable for educational purposes and further exploration.
 
 1. Fork the project.
-2. Create your feature branch: `git checkout -b feature/YourFeature`
+2. Create your feature branch: `git checkout -b feature/uFeature`
 3. Commit your changes: `git commit -m "Add a descriptive message about your update"`
-4. Push to the branch: `git push origin feature/YourFeature`
+4. Push to the branch: `git push origin feature/uFeature`
 
 ## Contact
 
