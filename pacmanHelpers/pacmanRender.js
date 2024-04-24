@@ -108,15 +108,15 @@ const textureCoords = [
 ];
 
 // Vertex normals
-const normals = [
+// const normals = [
 
-    0.0, 0.0, 1.0, 0.0, 0.0, 1.0, 0.0, 0.0, 1.0, 0.0, 0.0, 1.0,  //v0-v1-v2-v3 front
-    1.0, 0.0, 0.0, 1.0, 0.0, 0.0, 1.0, 0.0, 0.0, 1.0, 0.0, 0.0,  //v0-v3-v4-v5 right
-    0.0, 1.0, 0.0, 0.0, 1.0, 0.0, 0.0, 1.0, 0.0, 0.0, 1.0, 0.0,  //v0-v5-v6-v1 top
-    -1.0, 0.0, 0.0, -1.0, 0.0, 0.0, -1.0, 0.0, 0.0, -1.0, 0.0, 0.0,  //v1-v6-v7-v2 left
-    0.0, -1.0, 0.0, 0.0, -1.0, 0.0, 0.0, -1.0, 0.0, 0.0, -1.0, 0.0,  //v7-v4-v3-v2 bottom
-    0.0, 0.0, -1.0, 0.0, 0.0, -1.0, 0.0, 0.0, -1.0, 0.0, 0.0, -1.0   //v4-v7-v6-v5 back
-];
+//     0.0, 0.0, 1.0, 0.0, 0.0, 1.0, 0.0, 0.0, 1.0, 0.0, 0.0, 1.0,  //v0-v1-v2-v3 front
+//     1.0, 0.0, 0.0, 1.0, 0.0, 0.0, 1.0, 0.0, 0.0, 1.0, 0.0, 0.0,  //v0-v3-v4-v5 right
+//     0.0, 1.0, 0.0, 0.0, 1.0, 0.0, 0.0, 1.0, 0.0, 0.0, 1.0, 0.0,  //v0-v5-v6-v1 top
+//     -1.0, 0.0, 0.0, -1.0, 0.0, 0.0, -1.0, 0.0, 0.0, -1.0, 0.0, 0.0,  //v1-v6-v7-v2 left
+//     0.0, -1.0, 0.0, 0.0, -1.0, 0.0, 0.0, -1.0, 0.0, 0.0, -1.0, 0.0,  //v7-v4-v3-v2 bottom
+//     0.0, 0.0, -1.0, 0.0, 0.0, -1.0, 0.0, 0.0, -1.0, 0.0, 0.0, -1.0   //v4-v7-v6-v5 back
+// ];
 
 // Viewer position
 const pos_Viewer = [0.0, 0.0, 0.0, 1.0];
@@ -124,7 +124,7 @@ const pos_Viewer = [0.0, 0.0, 0.0, 1.0];
 // Model Material Features
 
 // Ambient coef.
-const kAmbi = [0.8, 0.8, 0.8];
+// const kAmbi = [0.8, 0.8, 0.8];
 
 // Diffuse coef.
 const kDiff = [0.8, 0.8, 0.8];
@@ -164,11 +164,11 @@ function initCubeBuffer() {
 
     // Vertex Normal Vectors
 
-    cubeVertexNormalBuffer = gl.createBuffer();
-    gl.bindBuffer(gl.ARRAY_BUFFER, cubeVertexNormalBuffer);
-    gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(normals), gl.STATIC_DRAW);
-    cubeVertexNormalBuffer.itemSize = 3;
-    cubeVertexNormalBuffer.numItems = normals.length / 3;
+    // cubeVertexNormalBuffer = gl.createBuffer();
+    // gl.bindBuffer(gl.ARRAY_BUFFER, cubeVertexNormalBuffer);
+    // gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(normals), gl.STATIC_DRAW);
+    // cubeVertexNormalBuffer.itemSize = 3;
+    // cubeVertexNormalBuffer.numItems = normals.length / 3;
 }
 
 function handleLoadedTexture(texture) {

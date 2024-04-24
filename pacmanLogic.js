@@ -132,7 +132,6 @@ function restartGame() {
     // Restart game infos and super mode timer, if set
     clearInterval(interval);
     switchSuperModeLight(false);
-    gl.uniform1f(gl.getUniformLocation(shaderProgram, "threshold"), threshold);
     document.getElementById('super-mode').innerHTML = "";
     document.getElementById('result').innerHTML = "";
     document.getElementById("restart").style.display = "none";

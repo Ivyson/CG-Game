@@ -26,11 +26,10 @@ function drawModel(angleXX, angleYY, angleZZ,
     gl.vertexAttribPointer(shaderProgram.textureCoordAttribute, cubeVertexTextureCoordBuffer.itemSize, gl.FLOAT, false, 0, 0);
 
     // Material properties
-
-    gl.uniform3fv(gl.getUniformLocation(shaderProgram, "k_ambient"), flatten(kAmbi));
-    gl.uniform3fv(gl.getUniformLocation(shaderProgram, "k_diffuse"), flatten(kDiff));
-    gl.uniform3fv(gl.getUniformLocation(shaderProgram, "k_specular"), flatten(kSpec));
-    gl.uniform1f(gl.getUniformLocation(shaderProgram, "shininess"), nPhong);
+    // gl.uniform3fv(gl.getUniformLocation(shaderProgram, "k_ambient"), flatten(kAmbi));
+    // gl.uniform3fv(gl.getUniformLocation(shaderProgram, "k_diffuse"), flatten(kDiff));
+    // gl.uniform3fv(gl.getUniformLocation(shaderProgram, "k_specular"), flatten(kSpec));
+    // gl.uniform1f(gl.getUniformLocation(shaderProgram, "shininess"), nPhong);
 
     // Light Sources
 
