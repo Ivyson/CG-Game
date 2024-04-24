@@ -171,16 +171,24 @@ function initCubeBuffer() {
     // cubeVertexNormalBuffer.numItems = normals.length / 3;
 }
 
-function handleLoadedTexture(texture) {
 
-    // Bind textures
-    gl.bindTexture(gl.TEXTURE_2D, texture);
-    gl.pixelStorei(gl.UNPACK_FLIP_Y_WEBGL, true);
-    gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, texture.image);
-    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.NEAREST);
-    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.NEAREST);
-    gl.bindTexture(gl.TEXTURE_2D, null);
+
+function handleLoadedTexture(texture) {
+    // gl.bindTexture(gl.TEXTURE_2D, texture); // Bind the texture first
+    // if (isPower(texture.image.height) && isPower(texture.image.width)) {
+    //     console.log('height:',texture.image.height,'Width',texture.image.width);
+    //     gl.generateMipmap(gl.TEXTURE_2D);
+    //     gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR_MIPMAP_LINEAR);
+    // } else {
+        gl.bindTexture(gl.TEXTURE_2D, texture);
+        gl.pixelStorei(gl.UNPACK_FLIP_Y_WEBGL, true);
+        gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, texture.image);
+        gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.LINEAR);
+        gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR);
+        gl.bindTexture(gl.TEXTURE_2D, null);
+    // }
 }
+
 
 function initTextures() {
 
@@ -188,10 +196,10 @@ function initTextures() {
     wallTexture = createTextureWithAsset("assets/bounds-copy.jpg")
 
     // Food texture
-    foodTexture = createTextureWithAsset("assets/yellow-sphere.png");
+    foodTexture = createTextureWithAsset("assets/super-food.png");
 
     // Super food texture
-    superFoodTexture = createTextureWithAsset("assets/Ball-copy1.png");
+    superFoodTexture = createTextureWithAsset("assets/super-food.png");
 
     // Pacman texture
     pacmanTexture = createTextureWithAsset("assets/pacman.png")
@@ -213,4 +221,8 @@ function createTextureWithAsset(asset) {
     texture.image.src = asset;
 
     return texture
+}
+function isPower(value)
+{
+	return( value & (value -1)) === 0;
 }
