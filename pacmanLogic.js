@@ -11,7 +11,8 @@ let globalTz = -30.0;
 let globalXX = -270.0;
 let globalYY = -1441;
 
-// Local transformation parameters
+let vsShader;
+let fsShader;
 
 // Translation vector
 let tx = 0.0;
@@ -296,12 +297,33 @@ function initCanvas() {
     shaderProgram = initShaders(gl);
 }
 
-function runWebGL() {
-    document.querySelector('#remainingLives').innerHTML = 'Remaining Lives : ' + remainingLives;
+async function fetchShaders() {
+    const responseVs = await fetch('pacmanHelpers/vsShader.shader');
+    if (!responseVs.ok) {
+        throw new Error('No vs Shader Found');
+    }
+    vsShader = await responseVs.text();
+    console.log(vsShader, "Is Vs Shader");
+
+    const responseFs = await fetch('pacmanHelpers/fsShader.shader');
+    if (!responseFs.ok) {
+        throw new Error('No fs Shader Found');
+    }
+    fsShader = await responseFs.text();
+    console.log(fsShader, "Is Fragment");
+    document.getElementById('shader-fs').innerHTML = fsShader;
+    document.getElementById('shader-vs').innerHTML = vsShader;
+    console.log(document.getElementById('shader-fs').innerHTML,"Inner html thing");
+    console.log(document.getElementById('shader-vs').innerHTML,"Inner html thing2");
     initCanvas();
     setEventListeners();
     initCubeBuffer();
     initTextures();
+}
+
+function runWebGL() {
+    document.querySelector('#remainingLives').innerHTML = 'Remaining Lives : ' + remainingLives;
+    fetchShaders()
 }
 
 window.onload = runWebGL();
