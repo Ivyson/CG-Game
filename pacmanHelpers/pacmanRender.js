@@ -199,7 +199,7 @@ function initTextures() {
     foodTexture = createTextureWithAsset("assets/super-food.png");
 
     // Super food texture
-    superFoodTexture = createTextureWithAsset("assets/super-food.png");
+    superFoodTexture = createTextureWithAsset("assets/Food-tobe.png");
 
     // Pacman texture
     pacmanTexture = createTextureWithAsset("assets/pacman.png")
