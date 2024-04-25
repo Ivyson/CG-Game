@@ -125,6 +125,7 @@ function endGame(won, sound) {
 
 function restartGame() {
     // Restart game mode
+    console.log('Restarting....');
     score = 0;
     remainingFood = 0;
     remainingLives = 3;
