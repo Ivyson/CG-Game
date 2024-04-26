@@ -17,7 +17,7 @@ function drawModel(angleXX, angleYY, angleZZ,
     const mvUniform = gl.getUniformLocation(shaderProgram, "uMVMatrix");
     gl.uniformMatrix4fv(mvUniform, false, new Float32Array(flatten(mvMatrix)));
 
-    // Passing the buffers (vertices, textures and normals)
+    // Passing the buffers (vertices and textures)
 
     gl.bindBuffer(gl.ARRAY_BUFFER, cubeVertexPositionBuffer);
     gl.vertexAttribPointer(shaderProgram.vertexPositionAttribute, cubeVertexPositionBuffer.itemSize, gl.FLOAT, false, 0, 0);
@@ -25,20 +25,6 @@ function drawModel(angleXX, angleYY, angleZZ,
     gl.bindBuffer(gl.ARRAY_BUFFER, cubeVertexTextureCoordBuffer);
     gl.vertexAttribPointer(shaderProgram.textureCoordAttribute, cubeVertexTextureCoordBuffer.itemSize, gl.FLOAT, false, 0, 0);
 
-    // Material properties
-    // gl.uniform3fv(gl.getUniformLocation(shaderProgram, "k_ambient"), flatten(kAmbi));
-    // gl.uniform3fv(gl.getUniformLocation(shaderProgram, "k_diffuse"), flatten(kDiff));
-    // gl.uniform3fv(gl.getUniformLocation(shaderProgram, "k_specular"), flatten(kSpec));
-    // gl.uniform1f(gl.getUniformLocation(shaderProgram, "shininess"), nPhong);
-
-    // Light Sources
-
-    // gl.uniform1i(gl.getUniformLocation(shaderProgram, "numLights"), lightSources.length);
-
-    // for (let i = 0; i < lightSources.length; i++) {
-    //     gl.uniform4fv(gl.getUniformLocation(shaderProgram, "allLights[" + String(i) + "].position"), flatten(lightSources[i].getPosition()));
-    //     gl.uniform3fv(gl.getUniformLocation(shaderProgram, "allLights[" + String(i) + "].intensities"), flatten(lightSources[i].getIntensity()));
-    // }
 
     // Apply textures
 
