@@ -72,30 +72,10 @@ function drawScene() {
 
     gl.uniformMatrix4fv(pUniform, false, new Float32Array(flatten(pMatrix)));
 
-    // Passing the viewer position to the vertex shader
-    gl.uniform4fv(gl.getUniformLocation(shaderProgram, "viewerPosition"), flatten(pos_Viewer));
-
     // Global transformations
     mvMatrix = translationMatrix(0, 0, globalTz);
     mvMatrix = mult(mvMatrix, rotationYYMatrix(globalYY));
     mvMatrix = mult(mvMatrix, rotationXXMatrix(globalXX));
-
-    // Updating the position of the light sources, if required
-    // for (i = 0; i < lightSources.length; i++) {
-        // if (lightSources[i].isOff())
-        //     continue;
-
-
-        // // Animating the light source, if defined
-        // let lightSourceMatrix = mvMatrix;
-        // if (lightSources[i].isRotZZOn())
-        //     lightSourceMatrix = mult(lightSourceMatrix, rotationZZMatrix(lightSources[i].getRotAngleZZ()));
-
-        // // Passing the Light Source Matrix to apply
-        // const lsmUniform = gl.getUniformLocation(shaderProgram, "allLights[" + String(i) + "].lightSourceMatrix");
-        // gl.uniformMatrix4fv(lsmUniform, false, new Float32Array(flatten(lightSourceMatrix)));
-    // }
-
     // Draw models
 
     drawField(mvMatrix);
@@ -114,7 +94,6 @@ function drawScene() {
 
 function drawChar(character, mvMatrix) {
     const texture = getCharacterTexture(character);
-    // Instantiating the current model
     drawModel(angleXX, angleYY, angleZZ,
         sx, sy, sz,
         character.x - (field.width / 2), ty, character.z - (field.height / 2),
