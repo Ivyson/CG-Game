@@ -47,7 +47,7 @@ function drawScene() {
     gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
 
     // Compute the perspective matrix
-    const pMatrix = perspective(45, 1, 0.05, 50);
+    const pMatrix = perspective(45, 1, -1, 10)
 
     // Passing the Projection Matrix to apply the current projection
     const pUniform = gl.getUniformLocation(shaderProgram, "uPMatrix");
@@ -78,6 +78,7 @@ function drawChar(character, mvMatrix) {
     const texture = getCharacterTexture(character);
     drawModel(angleXX, angleYY, angleZZ,  sx, sy, sz,  character.x - (field.width / 2), ty, character.z - (field.height / 2),  mvMatrix,  texture);
 }
+
 
 function getCharacterTexture(character) {
     switch (character.id) {
@@ -122,5 +123,5 @@ function drawWall(mvMatrix, xCoord, zCoord) {
 }
 
 function drawFood(mvMatrix, xCoord, zCoord, scale) {
-    drawModel(angleXX, angleYY, angleZZ, sx + scale, sy - scale, sz - scale, xCoord, 0, zCoord, mvMatrix, foodTexture);
+    drawModel(angleXX, angleYY, angleZZ, sx - scale, sy - scale, sz - scale, xCoord, 0, zCoord, mvMatrix, foodTexture);
 }
