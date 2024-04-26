@@ -9,3 +9,4 @@
 9. Try to rotate the pacman avatar according to the movement of choice
 10. Ensure that the pacman gif dissapears when game is active       ----Done----
 11. Fix the contradicting textures of the superfood and food
+12. The Restart button is not working
