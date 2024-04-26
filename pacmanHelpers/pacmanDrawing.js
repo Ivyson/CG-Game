@@ -111,8 +111,8 @@ function drawField(mvMatrix) {
                     break;
                 case 's':
                     drawFood(mvMatrix, xCoord, zCoord, 0.4);
-                    break;
-            }
+                    break; 
+                }
         }
     }
 }
