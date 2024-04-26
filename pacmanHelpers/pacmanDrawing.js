@@ -48,11 +48,7 @@ function drawScene() {
 
     // Compute the perspective matrix
     const pMatrix = perspective(45, 1, 0.05, 50);
-
-    // The viewer is on (0,0,0)
-    pos_Viewer[0] = pos_Viewer[1] = pos_Viewer[2] = 0.0;
-    pos_Viewer[3] = 1.0;
-
+    
     // Passing the Projection Matrix to apply the current projection
     const pUniform = gl.getUniformLocation(shaderProgram, "uPMatrix");
 
