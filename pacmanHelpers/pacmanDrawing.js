@@ -48,7 +48,7 @@ function drawScene() {
 
     // Compute the perspective matrix
     const pMatrix = perspective(45, 1, 0.05, 50);
-    
+
     // Passing the Projection Matrix to apply the current projection
     const pUniform = gl.getUniformLocation(shaderProgram, "uPMatrix");
 
@@ -76,11 +76,7 @@ function drawScene() {
 
 function drawChar(character, mvMatrix) {
     const texture = getCharacterTexture(character);
-    drawModel(angleXX, angleYY, angleZZ,
-        sx, sy, sz,
-        character.x - (field.width / 2), ty, character.z - (field.height / 2),
-        mvMatrix,
-        texture);
+    drawModel(angleXX, angleYY, angleZZ,  sx, sy, sz,  character.x - (field.width / 2), ty, character.z - (field.height / 2),  mvMatrix,  texture);
 }
 
 function getCharacterTexture(character) {
