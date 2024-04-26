@@ -148,9 +148,5 @@ function drawWall(mvMatrix, xCoord, zCoord) {
 }
 
 function drawFood(mvMatrix, xCoord, zCoord, scale) {
-    drawModel(angleXX, angleYY, angleZZ,
-        sx - scale, sy - scale, sz - scale,
-        xCoord, 0, zCoord,
-        mvMatrix,
-        foodTexture);
+    drawModel(angleXX, angleYY, angleZZ, sx - scale, sy - scale, sz - scale, xCoord, 0, zCoord, mvMatrix, foodTexture);
 }
