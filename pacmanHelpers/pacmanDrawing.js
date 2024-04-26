@@ -140,11 +140,7 @@ function drawField(mvMatrix) {
 }
 
 function drawWall(mvMatrix, xCoord, zCoord) {
-    drawModel(angleXX, angleYY, angleZZ,
-        sx, sy, sz,
-        xCoord, 0, zCoord,
-        mvMatrix,
-        wallTexture);
+    drawModel(angleXX, angleYY, angleZZ, sx, sy, sz, xCoord, 0, zCoord, mvMatrix, wallTexture);
 }
 
 function drawFood(mvMatrix, xCoord, zCoord, scale) {
