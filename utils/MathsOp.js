@@ -1,5 +1,6 @@
 let PerspectiveCam = (angle, near, far, aspectRatio) => {
-    let FOV = 1/(Math.tan(angle));
+    angletorad = angle*(Math.PI/180); //Converting the angle in degrees  to radians  
+    let FOV = 1/(Math.tan(angletorad));
     let distance = far - near;
     return new Float32Array([
         FOV*(1/aspectRatio), 0, 0, 0,
@@ -65,7 +66,7 @@ function multiplyMatrices(m1, m2) {
                 sum = sum + m1[i][j] * m2[j][k];
             }
             result[i][j] = sum;
-        }
+        }        
     }
 
     return result;
