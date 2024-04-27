@@ -47,8 +47,8 @@ function drawModel(angleXX, angleYY, angleZZ,
 function drawScene() {
 
     let i;
-    // let mvMatrix = createIdentityMatrix();
-    let mvMatrix;
+    let mvMatrix = createIdentityMatrix();
+    // let mvMatrix;
 
     // Clear color buffer
     gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
@@ -61,8 +61,8 @@ function drawScene() {
     gl.uniformMatrix4fv(pUniform, false, new Float32Array(pMatrix));
 
     // Global transformations
-    mvMatrix = translationMatrix( 0, 0, globalTz);
-    // mvMatrix = translateMat(mvMatrix, 0, 0, globalTz);
+    // mvMatrix = translationMatrix( 0, 0, globalTz);
+    mvMatrix = translateMat(mvMatrix, 0, 0, globalTz);
     // mvMatrix = rotateY(mvMatrix, globalYY);
     // mvMatrix = rotateX(mvMatrix, globalXX);
     mvMatrix = mult(mvMatrix, rotationYYMatrix(globalYY));
