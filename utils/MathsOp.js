@@ -79,7 +79,3 @@ function scale(matrix,sx, sy, sz)
         0, 0, 0, 1
         ]));
 }
-
-
-
-
