@@ -70,3 +70,12 @@ function multiplyMatrices(m1, m2) {
 
     return result;
 }
+function scale(sx, sy, sz)
+{
+    return new Float32Array([
+        sx, 0, 0, 0,
+        0, sy, 0, 0,
+        0, 0, sz, 0,
+        0, 0, 0, 1
+    ]);
+}

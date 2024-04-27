@@ -8,10 +8,10 @@ function drawModel(angleXX, angleYY, angleZZ,
     // Apply all transformations
 
     mvMatrix = mult(mvMatrix, translationMatrix(tx, ty, tz));
-    mvMatrix = mult(mvMatrix, rotationZZMatrix(angleZZ));
-    mvMatrix = mult(mvMatrix, rotationYYMatrix(angleYY));
-    mvMatrix = mult(mvMatrix, rotationXXMatrix(angleXX));
-    mvMatrix = mult(mvMatrix, scalingMatrix(sx, sy, sz));
+    mvMatrix = mult(mvMatrix, rotationZZMatrix(angleZZ)); //Basically rotating the existing matrice towards z.
+    mvMatrix = mult(mvMatrix, rotationYYMatrix(angleYY)); // '''''''''''''''''''''''''''''''''''''''''''''''y,
+    mvMatrix = mult(mvMatrix, rotationXXMatrix(angleXX)); //''''''''''''''''''''''''''''''''''''''''''''''''x
+    mvMatrix = mult(mvMatrix, scalingMatrix(sx, sy, sz));//Basically scaling the existing matrix or resizing it! 
 
     // Passing the Model View Matrix to apply the current transformation
     const mvUniform = gl.getUniformLocation(shaderProgram, "uMVMatrix");
