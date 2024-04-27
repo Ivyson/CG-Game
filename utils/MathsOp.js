@@ -4,7 +4,7 @@ let PerspectiveCam = (angle, near, far, aspectRatio) => {
     return new Float32Array([
         FOV*(1/aspectRatio), 0, 0, 0,
         0, FOV, 0, 0,
-        0, 0, -(near+far)/distance, -2*(near*far)/d,
+        0, 0, -(near+far)/distance, -2*(near*far)/distance,
         0, 0, -1, 0
     ]);
 };
