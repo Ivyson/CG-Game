@@ -8,10 +8,16 @@ function drawModel(angleXX, angleYY, angleZZ,
     // Apply all transformations
 
     mvMatrix = mult(mvMatrix, translationMatrix(tx, ty, tz));
+    // mvMatrix = translateMat(mvMatrix,tx, ty, tz );
+    // mvMatrix = rotateZ(mvMatrix, angleZZ);
+    // mvMatrix = rotateY(mvMatrix, angleYY);
+    // mvMatrix = rotateX(mvMatrix, angleXX);
+    // mvMatrix = scale(mvMatrix, sx, sy, sz);
     mvMatrix = mult(mvMatrix, rotationZZMatrix(angleZZ)); //Basically rotating the existing matrice towards z.
     mvMatrix = mult(mvMatrix, rotationYYMatrix(angleYY)); // '''''''''''''''''''''''''''''''''''''''''''''''y,
     mvMatrix = mult(mvMatrix, rotationXXMatrix(angleXX)); //''''''''''''''''''''''''''''''''''''''''''''''''x
     mvMatrix = mult(mvMatrix, scalingMatrix(sx, sy, sz));//Basically scaling the existing matrix or resizing it! 
+    console.log(mvMatrix);
 
     // Passing the Model View Matrix to apply the current transformation
     const mvUniform = gl.getUniformLocation(shaderProgram, "uMVMatrix");
@@ -41,21 +47,24 @@ function drawModel(angleXX, angleYY, angleZZ,
 function drawScene() {
 
     let i;
+    // let mvMatrix = createIdentityMatrix();
     let mvMatrix;
 
     // Clear color buffer
     gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
 
-    // Compute the perspective matrix
-    const pMatrix = perspective(45, 1, -1, 10)
+    const pMatrix = PerspectiveCam(12, 1, 3, -5); // Zoom in or out of the scene
 
     // Passing the Projection Matrix to apply the current projection
     const pUniform = gl.getUniformLocation(shaderProgram, "uPMatrix");
 
-    gl.uniformMatrix4fv(pUniform, false, new Float32Array(flatten(pMatrix)));
+    gl.uniformMatrix4fv(pUniform, false, new Float32Array(pMatrix));
 
     // Global transformations
-    mvMatrix = translationMatrix(0, 0, globalTz);
+    mvMatrix = translationMatrix( 0, 0, globalTz);
+    // mvMatrix = translateMat(mvMatrix, 0, 0, globalTz);
+    // mvMatrix = rotateY(mvMatrix, globalYY);
+    // mvMatrix = rotateX(mvMatrix, globalXX);
     mvMatrix = mult(mvMatrix, rotationYYMatrix(globalYY));
     mvMatrix = mult(mvMatrix, rotationXXMatrix(globalXX));
     // Draw models

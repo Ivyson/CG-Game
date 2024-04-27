@@ -1,6 +1,6 @@
-let PerspectiveCam = (angle, near, far, aspectRatio) => {
+let PerspectiveCam = (angle, aspectRatio, near, far) => {
     angletorad = angle*(Math.PI/180); //Converting the angle in degrees  to radians  
-    let FOV = 1/(Math.tan(angletorad));
+    let FOV = 1/(Math.tan(angletorad/2));
     let distance = far - near;
     return new Float32Array([
         FOV*(1/aspectRatio), 0, 0, 0,
@@ -10,7 +10,7 @@ let PerspectiveCam = (angle, near, far, aspectRatio) => {
     ]);
 };
 
-function translate(matrix, tx, ty, tz){
+function translateMat(matrix, tx, ty, tz){
     return new Float32Array(multiplyMatrices(matrix, [
         1, 0, 0, tx,
         0, 1, 0, ty,
@@ -18,7 +18,15 @@ function translate(matrix, tx, ty, tz){
         0, 0, 0, 1
         ]));
 }
-
+function createIdentityMatrix() {
+return [
+1, 0, 0, 0,
+0, 1, 0, 0,
+0, 0, 1, 0,
+0, 0, 0, 1
+];
+//return [1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1];
+}
  function rotateX(matrix, angle) {
 const sinAngle = Math.sin(angle);
 const cosAngle = Math.cos(angle);
