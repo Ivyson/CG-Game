@@ -13,7 +13,9 @@ function getShader(gl, id) {
         }
         k = k.nextSibling;
     }
-
+    let tshader = gl.createShader(type);
+    gl.shaderSource(tshader, str);
+    gl.compileShader(shader);
     let shader;
     if (shaderScript.type === "x-shader/x-fragment") {
         shader = gl.createShader(gl.FRAGMENT_SHADER);
