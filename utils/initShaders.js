@@ -1,19 +1,22 @@
+function getShaderType(gl, typeString) {
+    switch (typeString) {
+        case "x-shader/x-fragment": return gl.FRAGMENT_SHADER;
+        case "x-shader/x-vertex": return gl.VERTEX_SHADER;
+        default: return null;
+    }
+}
+
+function getShaderSource(id) {
+    const shaderScript = document.getElementById(id);
+    return shaderScript ? shaderScript.textContent || shaderScript.innerText : null;
+}
+
 function getShader(gl, id) {
-    let shaderScript = document.getElementById(id);
-    if (!shaderScript) {
-        return null;
-    }
+    const shaderTypeString = document.getElementById(id).type;
+    const shaderType = getShaderType(gl, shaderTypeString);
+    const shaderSource = getShaderSource(id);
 
-    let shaderType;
-    if (shaderScript.type === "x-shader/x-fragment") {
-        shaderType = gl.FRAGMENT_SHADER;
-    } else if (shaderScript.type === "x-shader/x-vertex") {
-        shaderType = gl.VERTEX_SHADER;
-    } else {
-        return null;
-    }
-
-    return compileShader(gl, shaderScript.textContent || shaderScript.innerText, shaderType);
+    return shaderType && shaderSource ? compileShader(gl, shaderSource, shaderType) : null;
 }
 
 function compileShader(gl, source, type) {
@@ -30,37 +33,40 @@ function compileShader(gl, source, type) {
     return shader;
 }
 
+function createProgram(gl, vertexShader, fragmentShader) {
+    const program = gl.createProgram();
+    gl.attachShader(program, vertexShader);
+    gl.attachShader(program, fragmentShader);
+    gl.linkProgram(program);
 
-// Defining the shader program
-
-function initShaders(gl) {
-    let fragmentShader = getShader(gl, "shader-fs");
-    let vertexShader = getShader(gl, "shader-vs");
-
-    let shaderProgram = gl.createProgram();
-    gl.attachShader(shaderProgram, vertexShader);
-    gl.attachShader(shaderProgram, fragmentShader);
-    gl.linkProgram(shaderProgram);
-
-    if (!gl.getProgramParameter(shaderProgram, gl.LINK_STATUS)) {
-        alert("Could not initialise shaders");
+    if (!gl.getProgramParameter(program, gl.LINK_STATUS)) {
+        console.error(`Error linking program: ${gl.getProgramInfoLog(program)}`);
+        gl.deleteProgram(program);
+        return null;
     }
 
-    gl.useProgram(shaderProgram);
+    gl.useProgram(program);
+    return program;
+}
 
-    // Coordinates
+function initShaders(gl) {
+    const vertexShader = getShader(gl, "shader-vs");
+    const fragmentShader = getShader(gl, "shader-fs");
+
+    const shaderProgram = createProgram(gl, vertexShader, fragmentShader);
+    if (!shaderProgram) {
+        alert("Could not initialise shaders");
+        return null;
+    }
 
     shaderProgram.vertexPositionAttribute = gl.getAttribLocation(shaderProgram, "aVertexPosition");
     gl.enableVertexAttribArray(shaderProgram.vertexPositionAttribute);
 
-    // Texture coordinates
-
     shaderProgram.textureCoordAttribute = gl.getAttribLocation(shaderProgram, "aTextureCoord");
     gl.enableVertexAttribArray(shaderProgram.textureCoordAttribute);
 
-    // The matrices
-
     shaderProgram.pMatrixUniform = gl.getUniformLocation(shaderProgram, "uPMatrix");
     shaderProgram.mvMatrixUniform = gl.getUniformLocation(shaderProgram, "uMVMatrix");
+
     return shaderProgram;
 }
