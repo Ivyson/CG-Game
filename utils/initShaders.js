@@ -1,22 +1,9 @@
-//////////////////////////////////////////////////////////////////////////////
-//
-//  initShaders.js
-//
-//  Getting, compiling and linking the vertex and the fragment shaders
-//
-//  J. Madeira - October 2015
-//
-//////////////////////////////////////////////////////////////////////////////
-
-
-// Getting and compiling a shader
-
 function getShader(gl, id) {
     let shaderScript = document.getElementById(id);
     if (!shaderScript) {
         return null;
     }
-
+    console.log(shaderScript.innerHTML);
     let str = "";
     let k = shaderScript.firstChild;
     console.log(k);
