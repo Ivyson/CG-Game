@@ -3,38 +3,33 @@ function getShader(gl, id) {
     if (!shaderScript) {
         return null;
     }
-    console.log(shaderScript.innerHTML);
-    let str = "";
-    let k = shaderScript.firstChild;
-    console.log(k);
-    while (k) {
-        if (k.nodeType === 3) {
-            str += k.textContent;
-        }
-        k = k.nextSibling;
-    }
-    let tshader = gl.createShader(type);
-    gl.shaderSource(tshader, str);
-    gl.compileShader(shader);
-    let shader;
+
+    let shaderType;
     if (shaderScript.type === "x-shader/x-fragment") {
-        shader = gl.createShader(gl.FRAGMENT_SHADER);
+        shaderType = gl.FRAGMENT_SHADER;
     } else if (shaderScript.type === "x-shader/x-vertex") {
-        shader = gl.createShader(gl.VERTEX_SHADER);
+        shaderType = gl.VERTEX_SHADER;
     } else {
         return null;
     }
 
-    gl.shaderSource(shader, str);
+    return compileShader(gl, shaderScript.textContent || shaderScript.innerText, shaderType);
+}
+
+function compileShader(gl, source, type) {
+    const shader = gl.createShader(type);
+    gl.shaderSource(shader, source);
     gl.compileShader(shader);
 
     if (!gl.getShaderParameter(shader, gl.COMPILE_STATUS)) {
-        alert(gl.getShaderInfoLog(shader));
+        console.error(`Error compiling shader: ${gl.getShaderInfoLog(shader)}`);
+        gl.deleteShader(shader);
         return null;
     }
 
     return shader;
 }
+
 
 // Defining the shader program
 
