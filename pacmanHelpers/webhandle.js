@@ -1,4 +1,4 @@
-WebGLUtils = (function() {
+webglhandling = (function() {
  
     function setupWebGL(canvas, opt_attribs) {
  
