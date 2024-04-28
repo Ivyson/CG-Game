@@ -112,7 +112,7 @@ function endGame(won, sound) {
     ghosts.map(ghost => ghost.updateDirection(0, 0, ghost.key));
     ghosts = [];
 
-    // Update page infos
+    // Update page Data board
     const result = won ? "YOU WON." : "GAME OVER.";
     document.getElementById('result').innerHTML = `${result} Score: ${score}`;
     document.getElementById('score').innerHTML = "";
@@ -132,7 +132,6 @@ function restartGame() {
 
     // Restart game infos and super mode timer, if set
     clearInterval(interval);
-    switchSuperModeLight(false);
     document.getElementById('super-mode').innerHTML = "";
     document.getElementById('result').innerHTML = "";
     document.getElementById("restart").style.display = "none";
@@ -156,9 +155,6 @@ function restartGame() {
 //         counter--;
 //         if (counter === 0) {
 //             superMode = false;
-//             switchSuperModeLight(false);
-//             // Set normal light threshold again
-//             gl.uniform1f(gl.getUniformLocation(shaderProgram, "threshold"), threshold);
 
 //             // Respawn dead ghosts
 //             // for (let i = 0; i < deadGhosts.length; i++)

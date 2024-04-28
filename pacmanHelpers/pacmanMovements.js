@@ -104,13 +104,7 @@ function handlePacmanEating() {
 
         // Only enable super mode if it isn't already enabled
         if (!superMode) {
-            // Switch threshold in shaders, in order to see more field
-            gl.uniform1f(gl.getUniformLocation(shaderProgram, "threshold"), 1.5 * threshold);
-
-            switchSuperModeLight(true);
-
             collisionSound.play();
-
             counter = 12;
             enableSuperModeEnv();
         } else {
