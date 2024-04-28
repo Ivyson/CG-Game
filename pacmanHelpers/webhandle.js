@@ -5,7 +5,7 @@ WebGLUtils = (function() {
   
       var context = create3DContext(canvas, opt_attribs);
       if (!context) {
-        showLink(OTHER_PROBLEM);
+        throw new Error("No Webgl support  Found on this Browser!");
       }
       return context;
     }
