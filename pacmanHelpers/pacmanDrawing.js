@@ -61,8 +61,8 @@ function drawScene() {
     gl.uniformMatrix4fv(pUniform, false, new Float32Array(pMatrix));
 
     // Global transformations
-    // mvMatrix = translationMatrix( 0, 0, globalTz);
-    mvMatrix = translateMat(mvMatrix, 0, 0, globalTz);
+    mvMatrix = translationMatrix( 0, 0, globalTz);
+    // mvMatrix = translateMat(mvMatrix, 0, 0, globalTz);
     // mvMatrix = rotateY(mvMatrix, globalYY);
     // mvMatrix = rotateX(mvMatrix, globalXX);
     mvMatrix = mult(mvMatrix, rotationYYMatrix(globalYY));
