@@ -24,6 +24,9 @@ This project is part of the Computer Graphics course at Cape Peninsula Universit
 
 - **GitHub**: Ivyson
 - **Telegram**: WhoAreYouKiid
+## Inspiration behind the game
+- For the development of this game, diogofferreira's project on whereby he designed a 3d pacman was very influential
+<a href="https://github.com/diogofferreira/pacman-3d.git">Click Here To visit this project</a>
 
 ## License
 This project is open-source. Feel free to use, enhance, or experiment with it!
