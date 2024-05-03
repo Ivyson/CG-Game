@@ -28,9 +28,9 @@ const angleZZ = 0.0;
 const introSound = new Audio("assets/sounds/start.wav");
 const eatingSound = new Audio("assets/sounds/eatfood.wav");
 const eatGhostSound = new Audio("assets/sounds/pacman_eatghost.wav");
-const deathSound = new Audio("assets/sounds/pacman_death.wav");
-const intermissionSound = new Audio("assets/sounds/pacman_intermission.wav");
-const collisionSound = new Audio("assets/sounds/collision_sound.wav");
+const deathSound = new Audio("assets/sounds/12.wav");
+const intermissionSound = new Audio("assets/sounds/pacman_intermission.wav"); //Start up song
+const collisionSound = new Audio("assets/sounds/collision_sound.wav"); //When a ghost is being eaten  by Pac man
 
 // Game flags and values
 let started = false;
