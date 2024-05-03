@@ -71,15 +71,9 @@
 }
 .game-window {
     display: none;
-    /* position: absolute; */
-    /* top: 50%; */
-    /* left: 50%; */
-    /* transform: translate(-50%, -50%); */
     width: 100%;
     height: 90%;
-    /* justify-content: center;
-    align-items: center; */
-    /* border: 2px red solid; */
+    /* border: #0000ff solid 3px; */
 }
 
 .game-canvas {
@@ -93,7 +87,7 @@
 }
 
 .super-mode {
-    color: #0000ff;
+    color: #f31c00;
     width: auto;
     height: 5%;
     font-size: 100%;
@@ -104,13 +98,11 @@
     width: auto;
     height: 3%;
     font-size: 100%;
-    margin: 3% 10%;  
-    /* border: 2px red solid; */
 }
 
 .result-button {
-    display: block;
-    padding: 10px 10px;
+    display: none;
+    padding: 2% 2%;
     border-radius: 25px 25px;
     height: 5%;
     font-size: 100%;
@@ -119,11 +111,13 @@
     border: solid rgb(240, 243, 41) 2px;
 }
 .logbox{
-    
+    /* position: absolute; */
     /* border: rgb(252, 248, 2) 5px solid; */
+    display: block;
     background-color: rgb(0, 0, 0);
-    width: 600px ;
+    width: 12% ;
     border-radius: 25px 25px;
+    height: 10vw;
 }
 p{
     font-size: 25px;
