@@ -46,7 +46,7 @@ let counterCopy = null;
 
 let remainingLives = null;
 
-let lastTime = 0; //Need to remove this part,Not useful anymore
+//let lastTime = 0; //Need to remove this part,Not useful anymore
 
 function initWebGL(canvas) {
   // Get WebGL context
@@ -61,7 +61,7 @@ function initWebGL(canvas) {
   gl.enable(gl.DEPTH_TEST);
 
   if (!gl) {
-    alert("Could not initialise WebGL, sorry! :-(");
+    alert("Your Browser does not really support webgl");
   }
 }
 
@@ -125,7 +125,7 @@ function endGame(won, sound) {
 
 function restartGame() {
   // Restart game mode
-  console.log("Restarting....");
+  console.log("Restarting Game....");
   score = 0;
   remainingFood = 0;
   remainingLives = 3;
@@ -139,7 +139,7 @@ function restartGame() {
   // Start game rendering
   initField();
 
-  // Play intro sound
+  // Playing intro sound first
   introSound.play();
 
   // Update game state
@@ -170,11 +170,11 @@ function enableSuperModeEnv() {
     }, 1000);
 }
 
-function animate() {
-  const timeNow = new Date().getTime();
+// function animate() {
+//   const timeNow = new Date().getTime();
 
-  lastTime = timeNow;
-}
+//   lastTime = timeNow;
+// }
 
 async function tick() {
   requestAnimFrame(tick);
@@ -187,9 +187,6 @@ async function tick() {
   movePacman();
   // Compute new ghost moves
   ghosts.map((ghost) => moveGhost(ghost));
-
-  // Animate models
-  animate();
 }
 
 function setEventListeners() {

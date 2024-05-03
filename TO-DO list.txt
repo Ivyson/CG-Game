@@ -11,3 +11,4 @@
 11. Fix the contradicting textures of the superfood and food
 12. The Restart button is not working
 Videoes and all the Material that served as an inspiration for this project: https://www.youtube.com/watch?v=GXlckaGr0Eo&t=1055s&pp=ygUSUGFjbWFuIGh0bWwganMgY3Nz- For designing my maze
+14. The Animate Function that i just added was no longer useful therefore should be removed(Inside the Pacman Logic)
