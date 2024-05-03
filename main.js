@@ -117,7 +117,7 @@ function endGame(won, sound) {
   document.getElementById("score").innerHTML = "";
   document.getElementById("remainingLives").innerHTML = "";
   document.getElementById("restart").style.display = "block";
-  
+
 
   // Play death or winning sound
   sound.play();
@@ -278,14 +278,14 @@ function initCanvas() {
 }
 
 async function fetchShaders() {
-  const responseVs = await fetch("pacmanHelpers/vsShader.shader");
+  const responseVs = await fetch("src/vsShader.shader");
   if (!responseVs.ok) {
     throw new Error("No vs Shader Found");
   }
   vsShader = await responseVs.text();
   console.log(vsShader, "Is Vs Shader");
 
-  const responseFs = await fetch("pacmanHelpers/fsShader.shader");
+  const responseFs = await fetch("src/fsShader.shader");
   if (!responseFs.ok) {
     throw new Error("No fs Shader Found");
   }
