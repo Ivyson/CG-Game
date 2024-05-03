@@ -43,7 +43,6 @@ let paused = false;
 let speedCopy = null;
 let counter;
 let counterCopy = null;
-
 let remainingLives = null;
 
 //let lastTime = 0; //Need to remove this part,Not useful anymore
