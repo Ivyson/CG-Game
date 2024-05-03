@@ -46,7 +46,7 @@ let counterCopy = null;
 
 let remainingLives = null;
 
-let lastTime = 0;
+let lastTime = 0; //Need to remove this part,Not useful anymore
 
 function initWebGL(canvas) {
   // Get WebGL context
@@ -172,18 +172,6 @@ function restartGame() {
 
 function animate() {
   const timeNow = new Date().getTime();
-
-  // if (lastTime !== 0) {
-  // const elapsed = timeNow - lastTime;
-
-  // Rotate the light sources
-  // lightSources.map(lightSource => {
-  //     if (lightSource.isRotZZOn()) {
-  //         const angle = lightSource.getRotAngleZZ() + lightSource.getRotationSpeed() * (90 * elapsed) / 1000.0;
-  //         lightSource.setRotAngleZZ(angle);
-  //     }
-  // });
-  // }
 
   lastTime = timeNow;
 }
