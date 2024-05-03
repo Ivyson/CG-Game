@@ -124,8 +124,9 @@ function endGame(won, sound) {
 }
 
 function restartGame() {
-  // Restart game mode
-  console.log("Restarting Game....");
+  // Restart game mode if the game has already started
+  if(started){
+    console.log("Restarting Game....");
   score = 0;
   remainingFood = 0;
   remainingLives = 3;
@@ -146,6 +147,11 @@ function restartGame() {
   gameOver = false;
   gameWin = false;
   superMode = false;
+  }
+  else{
+    console.log("Cannot restart if the game hasn't started");
+  }
+  
 }
 
 function enableSuperModeEnv() {
