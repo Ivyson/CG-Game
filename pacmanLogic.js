@@ -170,11 +170,6 @@ function enableSuperModeEnv() {
     }, 1000);
 }
 
-// function animate() {
-//   const timeNow = new Date().getTime();
-
-//   lastTime = timeNow;
-// }
 
 async function tick() {
   requestAnimFrame(tick);
