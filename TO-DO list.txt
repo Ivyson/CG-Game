@@ -14,3 +14,4 @@ Videoes and all the Material that served as an inspiration for this project: htt
 14. The Animate Function that i just added was no longer useful therefore should be removed(Inside the Pacman Logic)
 15. For somewhat reason.. The random placing of pacman is not really being randomised
 16. Resourceful Game sounds: https://www.sounds-resource.com/gamecube/pacmanvs/sound/50660/
+17. 189 Boxes were used to render the food of this game! with help of Matrices, Translating one box to the other point
