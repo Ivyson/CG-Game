@@ -69,6 +69,26 @@
         color: #7bff00;
     }
 }
+.win{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    height: 20vw;
+    width: 40vw;
+    background-color: whitesmoke;
+    border: 3px rgb(22, 21, 21) solid;
+    border-radius: 25px 25px;
+    display: none;
+}
+.win h1{
+    color: red;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 100px;
+    width: 100%;
+}
 .game-window {
     display: none;
     width: 100%;
