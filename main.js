@@ -135,7 +135,7 @@ function restartGame() {
   clearInterval(interval);
   document.getElementById("super-mode").innerHTML = "";
   document.getElementById("result").innerHTML = "";
-  document.getElementById("restart").style.display = "none";
+  // document.getElementById("restart").style.display = "none";
 
   // Start game rendering
   initField();

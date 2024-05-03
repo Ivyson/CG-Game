@@ -121,10 +121,10 @@
 }
 
 .result-button {
-    display: none;
+    display: block;
     padding: 2% 2%;
     border-radius: 25px 25px;
-    height: 5%;
+    height: 20%;
     font-size: 100%;
     margin: 3% 10%;
     font-family: 'Times New Roman', Times, serif;
