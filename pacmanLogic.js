@@ -148,27 +148,27 @@ function restartGame() {
   superMode = false;
 }
 
-// function enableSuperModeEnv() {
+function enableSuperModeEnv() {
 
 //     // Enable super mode timer
-//     interval = setInterval(function () {
-//         counter--;
-//         if (counter === 0) {
-//             superMode = false;
+    interval = setInterval(function () {
+        counter--;
+        if (counter === 0) {
+            superMode = false;
 
 //             // Respawn dead ghosts
-//             // for (let i = 0; i < deadGhosts.length; i++)
-//             //     ghosts.push(deadGhosts[i]);
-//             ghosts = ghosts.concat(deadGhosts);
-//             deadGhosts = [];
+            // for (let i = 0; i < deadGhosts.length; i++)
+            //     ghosts.push(deadGhosts[i]);
+            ghosts = ghosts.concat(deadGhosts);
+            deadGhosts = [];
 
-//             document.getElementById('super-mode').innerHTML = "";
-//             clearInterval(interval);
+            document.getElementById('super-mode').innerHTML = "";
+            clearInterval(interval);
 
-//         } else
-//             document.getElementById('super-mode').innerHTML = "SUPER MODE ending in " + counter + " seconds";
-//     }, 1000);
-// }
+        } else
+            document.getElementById('super-mode').innerHTML = "SUPER MODE ending in " + counter + " seconds";
+    }, 1000);
+}
 
 function animate() {
   const timeNow = new Date().getTime();
