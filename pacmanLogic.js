@@ -157,8 +157,8 @@ function enableSuperModeEnv() {
             superMode = false;
 
 //             // Respawn dead ghosts
-            // for (let i = 0; i < deadGhosts.length; i++)
-            //     ghosts.push(deadGhosts[i]);
+            for (let i = 0; i < deadGhosts.length; i++)
+                ghosts.push(deadGhosts[i]);
             ghosts = ghosts.concat(deadGhosts);
             deadGhosts = [];
 
