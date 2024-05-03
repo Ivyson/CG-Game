@@ -72,9 +72,6 @@ let remainingFood = 0;
 let difficulty = 0;
 let portals = [];
 
-// Light threshold in hard mode
-const threshold = 4.0;
-
 // Chars objects
 let pacman;
 let ghosts = [];

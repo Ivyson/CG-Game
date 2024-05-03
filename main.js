@@ -26,7 +26,7 @@ const angleZZ = 0.0;
 
 // Sounds
 const introSound = new Audio("assets/sounds/start.wav");
-const eatingSound = new Audio("assets/sounds/pacman_chomp.wav");
+const eatingSound = new Audio("assets/sounds/eatfood.wav");
 const eatGhostSound = new Audio("assets/sounds/pacman_eatghost.wav");
 const deathSound = new Audio("assets/sounds/pacman_death.wav");
 const intermissionSound = new Audio("assets/sounds/pacman_intermission.wav");
