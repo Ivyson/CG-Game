@@ -77,7 +77,7 @@ let ghosts = [];
 let deadGhosts = [];
 
 
-function FieldBlockConstructor(type, xPos, zPos) {
+function FieldBlockConstructor(type, xPos, yPos, zPos) {
     // Block type
     this.type = type;
     // Block coordinates
