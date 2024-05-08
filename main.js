@@ -206,19 +206,19 @@ function setEventListeners() {
         } else pauseOrContinuousGame();
         break;
       // Left
-      case 37:
+      case 37://I need to implement the rotation matrix according such that Pacmanturns to the right 
         pacman.updateDirection(-1, 0, key);
         break;
       // Up
-      case 38:
+      case 38: //Pacman needs to look up 
         pacman.updateDirection(0, -1, key);
         break;
       // Right
-      case 39:
+      case 39: //Pacman Needs to look to the right
         pacman.updateDirection(1, 0, key);
         break;
       // Down
-      case 40:
+      case 40: //Pacman needs to look down
         pacman.updateDirection(0, 1, key);
         break;
     }
