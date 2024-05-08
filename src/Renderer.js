@@ -114,7 +114,6 @@ const pos_Viewer = [0.0, 0.0, 0.0, 1.0];
 function initCubeBuffer() {
 
     // Coordinates
-
     cubeVertexPositionBuffer = gl.createBuffer();
     gl.bindBuffer(gl.ARRAY_BUFFER, cubeVertexPositionBuffer);
     gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(vertices), gl.STATIC_DRAW);
@@ -159,7 +158,7 @@ function initTextures() {
     foodTexture = createTextureWithAsset("assets/super-food.png");
 
     // Super food texture
-    superFoodTexture = createTextureWithAsset("assets/Food-tobe.png");
+    superFoodTexture = createTextureWithAsset("assets/super-food.png");
 
     // Pacman texture
     pacmanTexture = createTextureWithAsset("assets/PacmanAvatar.png")
