@@ -18,7 +18,11 @@ To test, Play or experiment with this game, Please follow the following steps:
     
   <img src="https://github.com/Ivyson/CG-Game/blob/main/assets/Readme/Game_Play1.png" alt="alt text" width="50%" height="auto" align="centre">
 
-  
+- To Move Around, Use the Arrow keys:
+    - Arrow Up - to move up
+    - Arrow Down - to move up
+    - Arrow Left - to Move Left
+    - Arrow Right - to Move to the right
 ## Prerequisites
 
 - A modern web browser with WebGL and HTML5 support.
