@@ -3,8 +3,12 @@
 Welcome to the CG-Game repository! This project is an exciting journey into the realm of computer graphics and game development.
 
 ## Getting Started
-
-Begin by cloning the repository to your local environment: `git clone https://github.com/Ivyson/CG-Game.git`
+To test, Play or experiment with this game, Please follow the following steps:
+-Begin by cloning the repository to your local environment: `git clone https://github.com/Ivyson/CG-Game.git`
+-Ensure that you have installed Live Server on you IDE, For my case i was using vs-code, You can install the live server.
+-If you have installed the live server extention, open the folder, If using CLI : `cd CG-Game && code .`
+-If the game is running, great! Now to the functionalities of the game:
+        -This is what you are supposed to be seeing:
 
 ## Prerequisites
 
