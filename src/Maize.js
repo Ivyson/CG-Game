@@ -69,7 +69,6 @@ const field = {
 
 // Game flags and values
 let remainingFood = 0;
-let difficulty = 0;
 let portals = [];
 
 // Chars objects
@@ -78,7 +77,7 @@ let ghosts = [];
 let deadGhosts = [];
 
 
-function FieldBlockConstructor(type, xPos, yPos, zPos) {
+function FieldBlockConstructor(type, xPos, zPos) {
     // Block type
     this.type = type;
     // Block coordinates
@@ -88,7 +87,7 @@ function FieldBlockConstructor(type, xPos, yPos, zPos) {
     this.moves = [];
 }
 
-function CharacterConstructor(id) {
+function CharacterConstructor(id) { //This is a character's Constructor for each and every character on the game
     // Char coordinates
     this.x = 0.0;
     this.z = 0.0;
