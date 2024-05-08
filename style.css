@@ -43,7 +43,7 @@
     border: 2px blue solid;
 }
 
-.start-button {
+.start-button, #scode {
     font-family: 'Times New Roman', Times, serif;
     font-size: 30px;
     color: rgb(255, 255, 255);
@@ -92,6 +92,7 @@
 #scode{
     text-decoration: none;
     color:  #7bff00;
+    animation: fadeIn 2s infinite;
 }
 #Thanks{
     align-items: center;
