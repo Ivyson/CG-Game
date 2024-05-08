@@ -26,10 +26,10 @@ This project is part of the Computer Graphics course at Cape Peninsula Universit
 - **GitHub**: Ivyson
 - **Telegram**: WhoAreYouKiid
 ## Inspiration behind the game
-- For the development of this game, diogofferreira's project on whereby he designed a 3d pacman was very influential : <a href="https://github.com/diogofferreira/pacman-3d" alt = "diogofferreira">Click Here To visit this project</a>
+- For the development of this game, diogofferreira's project on whereby he designed a 3d pacman was very influential : <a href="https://github.com/diogofferreira/pacman-3d" alt = "diogofferreira" target="_blank" >Click Here To visit this project</a>
 - Servetgulnaroglu's Video on How to make Pacman using 2d Context was helpfull to design and understand most of the game's Logic:
-    - The Link to the Video: <a href="https://youtu.be/GXlckaGr0Eo" alt="Servetgulnaroglu" style="text-decoration: none;"> Click Here </a>
-    - Link to his repository: <a href="https://github.com/servetgulnaroglu/pacman-js" alt="Pacman-Js"  style="text-decoration: none;"> Click Here </a>
+    - The Link to the Video: <a href="https://youtu.be/GXlckaGr0Eo" alt="Servetgulnaroglu" style="text-decoration: none;" target="_blank"> Click Here </a>
+    - Link to his repository: <a href="https://github.com/servetgulnaroglu/pacman-js" alt="Pacman-Js"  style="text-decoration: none;" target="_blank"> Click Here </a>
 
 ## License
 This project is open-source. Feel free to use, enhance, or experiment with it!
