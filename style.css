@@ -89,6 +89,18 @@
     font-size: 100px;
     width: 100%;
 }
+#scode{
+    text-decoration: none;
+    color:  #7bff00;
+}
+#Thanks{
+    align-items: center;
+}
+hr{
+    color: blue;
+    width: 100%;
+    height: 20px;
+}
 .game-window {
     display: none;
     width: 100%;
