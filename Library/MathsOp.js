@@ -11,7 +11,7 @@ let PerspectiveCam = (angle, aspectRatio, near, far) => {
 };
 
 function translateMat(matrix, tx, ty, tz){
-    return new Float32Array(multiplyMatrices(matrix, [
+    return new Float32Array(matmultiply(matrix, [
         1, 0, 0, tx,
         0, 1, 0, ty,
         0, 0, 1, tz,
@@ -27,64 +27,66 @@ return [
 ];
 //return [1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1];
 }
- function rotateX(matrix, angle) {
-const sinAngle = Math.sin(angle);
-const cosAngle = Math.cos(angle);
- return new Float32Array(multiplyMatrices(matrix, [
-1, 0, 0, 0,
-0, cosAngle, -sinAngle, 0,
-0, sinAngle, cosAngle, 0,
-0, 0, 0, 1,
-0, 0, 0, 1
-]));
-}
- function rotateY(matrix, angle) {
-const sinAngle = Math.sin(angle);
-const cosAngle = Math.cos(angle);
- return new Float32Array(multiplyMatrices(matrix, [
-cosAngle, 0, sinAngle, 0,
-0, 1, 0, 0,
--sinAngle, 0, cosAngle, 0,
-0, 0, 0, 1,
-0, 0, 0, 1
-]));
-}
- function rotateZ(matrix, angle) {
-const sinAngle = Math.sin(angle);
-const cosAngle = Math.cos(angle);
- return new Float32Array(multiplyMatrices(matrix, [
-cosAngle, sinAngle, 0, 0,
--sinAngle, cosAngle, 0, 0,
-0, 0, 1, 0,
-0, 0, 0, 1
-]));
-}
-function multiplyMatrices(m1, m2) {
-    const rows_m1 = m1.length;
-    const cols_m1 = m1[0].length;
-    const cols_m2 = m2[0].length;
-
-    // Initialize the result matrix with zeros
-    const result = Array.from({ length: rows_m1 }, () => Array(cols_m2).fill(0));
-
-    for (let i = 0; i < rows_m1; i++) {
-        for (let j = 0; j < cols_m2; j++) {
-            let sum = 0;
-            for (let k = 0; k < cols_m1; k++) {
-                sum = sum + m1[i][j] * m2[j][k];
-            }
-            result[i][j] = sum;
-        }        
+function rotateX(matrix, angle) {
+    angle = toRadians(angle);
+    const sinAngle = Math.sin(angle);
+    const cosAngle = Math.cos(angle);
+     return (matmultiply(matrix, [
+    1, 0, 0, 0,
+    0, cosAngle, -sinAngle, 0,
+    0, sinAngle, cosAngle, 0,
+    0, 0, 0, 1,
+    0, 0, 0, 1
+    ]));
     }
-
-    return result;
-}
+function rotateY(matrix, angle) {
+    angle = toRadians(angle);
+    const sinAngle = Math.sin(angle);
+    const cosAngle = Math.cos(angle);
+     return new Float32Array(matmultiply(matrix, [
+    cosAngle, 0, sinAngle, 0,
+    0, 1, 0, 0,
+    -sinAngle, 0, cosAngle, 0,
+    0, 0, 0, 1,
+    0, 0, 0, 1
+    ]));
+    }
+function rotateZ(matrix, angle) {
+    angle = toRadians(angle);
+    const sinAngle = Math.sin(angle);
+    const cosAngle = Math.cos(angle);
+     return new Float32Array(matmultiply(matrix, [
+    cosAngle, sinAngle, 0, 0,
+    -sinAngle, cosAngle, 0, 0,
+    0, 0, 1, 0,
+    0, 0, 0, 1
+    ]));
+    }
+function matmultiply(mat1, mat2) {
+    let result = [];
+    for (let i = 0; i < 4; i++) {
+      for (let j = 0; j < 4; j++) {
+        let sum = 0;
+        for (let k = 0; k < 4; k++) {
+          sum += mat1[i * 4 + k] * mat2[k * 4 + j];
+          // console.log(sum);
+        }
+        result.push(sum);
+      }
+    }
+    console.log(result);
+    return new Float32Array(result);
+  }
 function scale(matrix,sx, sy, sz)
 {
-    return new Float32Array(multiplyMatrices(matrix, [
+    return new Float32Array(matmultiply(matrix, [
         sx, 0, 0, 0,
         0, sy, 0, 0,
         0, 0, sz, 0,
         0, 0, 0, 1
         ]));
+}
+function toRadians(theta)
+{
+    return theta*(Math.PI/180);
 }
