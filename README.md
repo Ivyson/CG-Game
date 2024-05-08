@@ -1,4 +1,4 @@
-# Coputer Graphics Game - Project
+# Computer Graphics Game - Project
 
 Welcome to the CG-Game repository! This project is an exciting journey into the realm of computer graphics and game development.
 
@@ -9,20 +9,23 @@ To test, Play or experiment with this game, Please follow the following steps:
 - If you have installed the live server extention, open the folder, If using CLI : `cd CG-Game && code .`
 - If the game is running, great! Now to the functionalities of the game:
   - This is what you are supposed to be seeing:
-<img src="https://github.com/Ivyson/CG-Game/blob/main/assets/Readme/Intro_Game1.png" alt="alt text" width="50%" height="auto" align="centre">
+<p align="center">
+  <img src="https://github.com/Ivyson/CG-Game/blob/main/assets/Readme/Intro_Game1.png" alt="alt text" width="50%">
+</p>
 
 
   - To play this game press the enter button
     
   - You should see something Of this nature :
-    
+<p align="center">
   <img src="https://github.com/Ivyson/CG-Game/blob/main/assets/Readme/Game_Play1.png" alt="alt text" width="50%" height="auto" align="centre">
-
+</p>
 - To Move Around, Use the Arrow keys:
-    - Arrow Up - to move up
-    - Arrow Down - to move up
-    - Arrow Left - to Move Left
-    - Arrow Right - to Move to the right
+  - Arrow Up: Move up
+  - Arrow Down: Move down
+  - Arrow Left: Move left
+  - Arrow Right: Move right
+
 ## Prerequisites
 
 - A modern web browser with WebGL and HTML5 support.
