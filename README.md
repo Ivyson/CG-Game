@@ -26,6 +26,10 @@ To test, Play or experiment with this game, Please follow the following steps:
   - Arrow Down: Move down
   - Arrow Left: Move left
   - Arrow Right: Move right
+- To Zoom or change the perspective of the game:
+   - Scroll in: Zoom in
+   - Scoll Out: Zoom out
+   - Mouse Click and Drag: Drags the game and changes the perspective according to the direction you drag it to
 
 ## Prerequisites
 
