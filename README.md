@@ -17,6 +17,8 @@ To test, Play or experiment with this game, Please follow the following steps:
   - You should see something Of this nature :
     
   <img src="https://github.com/Ivyson/CG-Game/blob/main/assets/Readme/Game_Play1.png" alt="alt text" width="50%" height="auto" align="centre">
+
+  
 ## Prerequisites
 
 - A modern web browser with WebGL and HTML5 support.
