@@ -20,6 +20,7 @@ To test, Play or experiment with this game, Please follow the following steps:
 <p align="center">
   <img src="https://github.com/Ivyson/CG-Game/blob/main/assets/Readme/Game_Play1.png" alt="alt text" width="50%" height="auto" align="centre">
 </p>
+
 - To Move Around, Use the Arrow keys:
   - Arrow Up: Move up
   - Arrow Down: Move down
