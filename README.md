@@ -3,13 +3,18 @@
 Welcome to the CG-Game repository! This project is an exciting journey into the realm of computer graphics and game development.
 
 ## Getting Started
-
-Begin by cloning the repository to your local environment: `git clone https://github.com/Ivyson/CG-Game.git`
+To test, Play or experiment with this game, Please follow the following steps:
+-Begin by cloning the repository to your local environment: `git clone https://github.com/Ivyson/CG-Game.git`
+- Ensure that you have installed Live Server on you IDE, For my case i was using vs-code, You can install the live server.
+- If you have installed the live server extention, open the folder, If using CLI : `cd CG-Game && code .`
+- If the game is running, great! Now to the functionalities of the game:
+        - This is what you are supposed to be seeing:
 
 ## Prerequisites
 
 - A modern web browser with WebGL and HTML5 support.
 - A code editor (optional, if you wish to modify the code).
+- This code was only Tested on Google Chrome, Microsoft Edge and was not really functioning well on Mozilla Firefox. Not really Tested on Safari and any other browser, I would Appreciate feedback on how it works if you tried it on a different Browser.
 
 ## Contribution
 
@@ -25,8 +30,10 @@ This project is part of the Computer Graphics course at Cape Peninsula Universit
 - **GitHub**: Ivyson
 - **Telegram**: WhoAreYouKiid
 ## Inspiration behind the game
-- For the development of this game, diogofferreira's project on whereby he designed a 3d pacman was very influential : <a href="https://github.com/diogofferreira/pacman-3d" alt = "diogofferreira">Click Here To visit this project</a>
-- 
+- For the development of this game, diogofferreira's project on whereby he designed a 3d pacman was very influential : <a href="https://github.com/diogofferreira/pacman-3d" alt = "diogofferreira" target="_blank" >Click Here To visit this project</a>
+- Servetgulnaroglu's Video on How to make Pacman using 2d Context was helpfull to design and understand most of the game's Logic:
+    - The Link to the Video: <a href="https://youtu.be/GXlckaGr0Eo" alt="Servetgulnaroglu" style="text-decoration: none;" target="_blank"> Click Here </a>
+    - Link to his repository: <a href="https://github.com/servetgulnaroglu/pacman-js" alt="Pacman-Js"  style="text-decoration: none;" target="_blank"> Click Here </a>
 
 ## License
 This project is open-source. Feel free to use, enhance, or experiment with it!
