@@ -10,7 +10,9 @@ To test, Play or experiment with this game, Please follow the following steps:
 - If the game is running, great! Now to the functionalities of the game:
   - This is what you are supposed to be seeing:
 <img src="https://github.com/Ivyson/CG-Game/blob/main/assets/Readme/Intro_Game1.png" alt="alt text" width="50%" height="auto" align="centre">
-
+  - To play this game press the enter button
+  - You should see something Of this nature :
+  <img src="https://github.com/Ivyson/CG-Game/blob/main/assets/Readme/Game_Play1.png" alt="alt text" width="50%" height="auto" align="centre">
 ## Prerequisites
 
 - A modern web browser with WebGL and HTML5 support.
