@@ -108,9 +108,6 @@ const textureCoords = [
 ];
 
 
-// Viewer position
-const pos_Viewer = [0.0, 0.0, 0.0, 1.0];
-
 function initCubeBuffer() {
 
     // Coordinates
