@@ -112,7 +112,7 @@ function endGame(won, sound) {
   ghosts = [];
 
   // Update page Data board
-  const result = won ? "YOU WON." : "GAME OVER.";
+  const result = won ? "YOU WON." : "GAME OVER.";  //Terenary Operator, just like if statement
   document.getElementById("result").innerHTML = `${result} Score: ${score}`;
   document.getElementById("score").innerHTML = "";
   document.getElementById("remainingLives").innerHTML = "";
