@@ -5,18 +5,18 @@ Welcome to the CG-Game repository! This project is an exciting journey into the 
 ## Getting Started
 To test, Play or experiment with this game, Please follow the following steps:
 - Begin by cloning the repository to your local environment: `git clone https://github.com/Ivyson/CG-Game.git`
-- Ensure that you have installed Live Server on you IDE, For my case i was using vs-code, You can install the live server.
-- If you have installed the live server extention, open the folder, If using CLI : `cd CG-Game && code .`
-- If the game is running, great! Now to the functionalities of the game:
-  - This is what you are supposed to be seeing:
+- Ensure that you have installed the Live Server extension on your IDE. In my case, I was using VS Code. You can install the Live Server extension from the marketplace.
+- If you have installed the Live Server extension, open the folder in VS Code:
+ `cd CG-Game && code .`
+- If the game is running, great! Now, let's look at the functionalities of the game:
+- You should see the following screen:
 <p align="center">
   <img src="https://github.com/Ivyson/CG-Game/blob/main/assets/Readme/Intro_Game1.png" alt="alt text" width="50%">
 </p>
 
 
-  - To play this game press the enter button
-    
-  - You should see something Of this nature :
+ - To start playing the game, press the **Enter** button.
+    - The gameplay screen should look like this:
 <p align="center">
   <img src="https://github.com/Ivyson/CG-Game/blob/main/assets/Readme/Game_Play1.png" alt="alt text" width="50%" height="auto" align="centre">
 </p>
