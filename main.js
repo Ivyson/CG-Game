@@ -211,7 +211,7 @@ function setEventListeners() {
         break;
       // Up
       case 38: //Pacman needs to look up 
-        pacman.updateDirection(0, -1, key);
+        pacman.updateDirection(0, -1, key); //-1
         break;
       // Right
       case 39: //Pacman Needs to look to the right

@@ -183,5 +183,4 @@ function createFieldStructure(structure) {
         newField.push(line);
     }
     return newField;
-
 }
