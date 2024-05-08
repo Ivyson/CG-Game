@@ -10,7 +10,7 @@ Begin by cloning the repository to your local environment: `git clone https://gi
 
 - A modern web browser with WebGL and HTML5 support.
 - A code editor (optional, if you wish to modify the code).
-- This code was only Tested on Google Chrome and Microsoft Edge, I would Appreciate feedback on how it works if you tried it on a different Browser.
+- This code was only Tested on Google Chrome, Microsoft Edge and was not really functioning well on Mozilla Firefox. Not really Tested on Safari and any other browser, I would Appreciate feedback on how it works if you tried it on a different Browser.
 
 ## Contribution
 
