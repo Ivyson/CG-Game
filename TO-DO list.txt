@@ -4,15 +4,15 @@
 4. Have a vertex shader on its separate file or folder   ---Done---
 5. Fix the folder system --Fixed --
 6. Have you own files that have the same functionality as the webutils ---Done---
-8. Clean Up the code and make your own comments
-9. Try to rotate the pacman avatar according to the movement of choice
-10. Ensure that the pacman gif dissapears when game is active       ----Done----
-11. Fix the contradicting textures of the superfood and food 
-12. The Restart button is not working ----Need to work on this firstly --Fixed --
-Videoes and all the Material that served as an inspiration for this project: https://www.youtube.com/watch?v=GXlckaGr0Eo&t=1055s&pp=ygUSUGFjbWFuIGh0bWwganMgY3Nz- For designing my maze
-14. The Animate Function that i just added was no longer useful therefore should be removed(Inside the Pacman Logic) --Removed --
-15. For somewhat reason.. The random placing of pacman is not really being randomised
-16. Resourceful Game sounds: https://www.sounds-resource.com/gamecube/pacmanvs/sound/50660/
-17. 189 Boxes were used to render the food of this game! with help of Matrices, Translating one box to the other point
-18. Add Perspective to the game Change the view on the event listener on the Movement.js File
-19. Add a functionality to rotate the the Pacman According to a button Press on the Maze file in the CharacterConstructor function 
+7. Clean Up the code and make your own comments
+8. Try to rotate the pacman avatar according to the movement of choice
+9. Ensure that the pacman gif dissapears when game is active       ----Done----
+10. Fix the contradicting textures of the superfood and food 
+11. The Restart button is not working ----Need to work on this firstly --Fixed --
+12. Videoes and all the Material that served as an inspiration for this project: https://www.youtube.com/watch?v=GXlckaGr0Eo&t=1055s&pp=ygUSUGFjbWFuIGh0bWwganMgY3Nz- For designing my maze
+13. The Animate Function that i just added was no longer useful therefore should be removed(Inside the Pacman Logic) --Removed --
+14. For somewhat reason.. The random placing of pacman is not really being randomised
+15. Resourceful Game sounds: https://www.sounds-resource.com/gamecube/pacmanvs/sound/50660/
+16. 189 Boxes were used to render the food of this game! with help of Matrices, Translating one box to the other point
+17. Add Perspective to the game Change the view on the event listener on the Movement.js File
+18. Add a functionality to rotate the the Pacman According to a button Press on the Maze file in the CharacterConstructor function 
