@@ -8,8 +8,11 @@ To test, Play or experiment with this game, Please follow the following steps:
 - Ensure that you have installed Live Server on you IDE, For my case i was using vs-code, You can install the live server.
 - If you have installed the live server extention, open the folder, If using CLI : `cd CG-Game && code .`
 - If the game is running, great! Now to the functionalities of the game:
-        - This is what you are supposed to be seeing:
-
+  - This is what you are supposed to be seeing:
+<img src="https://github.com/Ivyson/CG-Game/blob/main/assets/Readme/Intro_Game1.png" alt="alt text" width="50%" height="auto" align="centre">
+  - To play this game press the enter button
+  - You should see something Of this nature :
+  <img src="https://github.com/Ivyson/CG-Game/blob/main/assets/Readme/Game_Play1.png" alt="alt text" width="50%" height="auto" align="centre">
 ## Prerequisites
 
 - A modern web browser with WebGL and HTML5 support.
