@@ -9,7 +9,7 @@ To test, Play or experiment with this game, Please follow the following steps:
 - If you have installed the live server extention, open the folder, If using CLI : `cd CG-Game && code .`
 - If the game is running, great! Now to the functionalities of the game:
         - This is what you are supposed to be seeing:
-<img src="https://github.com/Ivyson/CG-Game/blob/main/assets/Readme/Intro_Game1.png" alt="alt text" width="50%" height="auto">
+<img src="https://github.com/Ivyson/CG-Game/blob/main/assets/Readme/Intro_Game1.png" alt="alt text" width="50%" height="auto" align="centre">
 
 ## Prerequisites
 
