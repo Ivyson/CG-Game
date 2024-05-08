@@ -189,7 +189,32 @@ async function tick() {
 }
 
 function setEventListeners() {
+  let moving = false;
+  let xPos = 0;
+  let yPos = 0;
+
+  // Handle rotation with mouse movement when pressed
+  document.addEventListener('mousedown', event => {
+      xPos = event.pageX;
+      yPos = event.pageY;
+      moving = true;
+  });
+
+  document.addEventListener('mousemove', event => {
+      if (moving) {
+          globalYY -= (xPos - event.pageX) * 0.01;
+          globalXX -= (yPos - event.pageY) * 0.01;
+          drawScene();
+      }
+  });
+
+  document.addEventListener('mouseup', () => moving = false);
+
   // Pacman Movement
+  document.addEventListener('wheel', event => {
+    globalTz += event.deltaY > 0 ? 1 : -1;
+    drawScene();
+});
   document.addEventListener("keydown", (event) => {
     // Getting the pressed key
     let key = event.keyCode;

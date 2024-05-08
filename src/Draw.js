@@ -17,7 +17,7 @@ function drawModel(angleXX, angleYY, angleZZ,
     mvMatrix = mult(mvMatrix, rotationYYMatrix(angleYY)); // '''''''''''''''''''''''''''''''''''''''''''''''y,
     mvMatrix = mult(mvMatrix, rotationXXMatrix(angleXX)); //''''''''''''''''''''''''''''''''''''''''''''''''x
     mvMatrix = mult(mvMatrix, scalingMatrix(sx, sy, sz));//Basically scaling the existing matrix or resizing it! 
-    console.log(mvMatrix);
+    // console.log(mvMatrix);
 
     // Passing the Model View Matrix to apply the current transformation
     const mvUniform = gl.getUniformLocation(shaderProgram, "uMVMatrix");
