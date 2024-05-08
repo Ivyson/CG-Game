@@ -105,7 +105,10 @@
     transform: translate(-50%, -50%);
     height: 100%;
 }
-
+canvas{
+    width: 800px;
+    height: 512px;
+}
 .super-mode {
     color: #f31c00;
     width: auto;

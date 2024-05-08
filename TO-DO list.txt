@@ -2,16 +2,15 @@
 2. Fix the sounds
 3. Use a constant color to get rid of the redness on the super mode  ---Done---
 4. Have a vertex shader on its separate file or folder   ---Done---
-5. Fix the folder system
-6. Have you own files that have the same functionality as the webutils
-7. Use a different Picture of pacman and ghosts
+5. Fix the folder system --Fixed --
+6. Have you own files that have the same functionality as the webutils ---Done---
 8. Clean Up the code and make your own comments
 9. Try to rotate the pacman avatar according to the movement of choice
 10. Ensure that the pacman gif dissapears when game is active       ----Done----
-11. Fix the contradicting textures of the superfood and food
-12. The Restart button is not working ----Need to work on this firstly
+11. Fix the contradicting textures of the superfood and food 
+12. The Restart button is not working ----Need to work on this firstly --Fixed --
 Videoes and all the Material that served as an inspiration for this project: https://www.youtube.com/watch?v=GXlckaGr0Eo&t=1055s&pp=ygUSUGFjbWFuIGh0bWwganMgY3Nz- For designing my maze
-14. The Animate Function that i just added was no longer useful therefore should be removed(Inside the Pacman Logic)
+14. The Animate Function that i just added was no longer useful therefore should be removed(Inside the Pacman Logic) --Removed --
 15. For somewhat reason.. The random placing of pacman is not really being randomised
 16. Resourceful Game sounds: https://www.sounds-resource.com/gamecube/pacmanvs/sound/50660/
 17. 189 Boxes were used to render the food of this game! with help of Matrices, Translating one box to the other point
