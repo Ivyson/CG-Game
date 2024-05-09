@@ -7,16 +7,16 @@ function drawModel(angleXX, angleYY, angleZZ,
 
     // Apply all transformations
 
-    mvMatrix = mult(mvMatrix, translationMatrix(tx, ty, tz));
-    console.log('Trans:',mvMatrix);
-    console.log('RotZ:',mvMatrix);
-    console.log('RotY:',mvMatrix);
-    console.log('Rot:X',mvMatrix);
-   mvMatrix = mult(mvMatrix, rotationZZMatrix(angleZZ)); //Basically rotating the existing matrice towards z.
-    mvMatrix = mult(mvMatrix, rotationYYMatrix(angleYY)); // '''''''''''''''''''''''''''''''''''''''''''''''y,
-    mvMatrix = mult(mvMatrix, rotationXXMatrix(angleXX)); //''''''''''''''''''''''''''''''''''''''''''''''''x
-    mvMatrix = mult(mvMatrix, scalingMatrix(sx, sy, sz));//Basically scaling the existing matrix or resizing it! 
-    console.log(mvMatrix);
+    mvMatrix = multiplyMat(mvMatrix, translationMatrix(tx, ty, tz));
+    // console.log('Trans:',mvMatrix);
+    // console.log('RotZ:',mvMatrix);
+    // console.log('RotY:',mvMatrix);
+    // console.log('Rot:X',mvMatrix);
+   mvMatrix = multiplyMat(mvMatrix, rotationZZMatrix(angleZZ)); //Basically rotating the existing matrice towards z.
+    mvMatrix = multiplyMat(mvMatrix, rotationYYMatrix(angleYY)); // '''''''''''''''''''''''''''''''''''''''''''''''y,
+    mvMatrix = multiplyMat(mvMatrix, rotationXXMatrix(angleXX)); //''''''''''''''''''''''''''''''''''''''''''''''''x
+    mvMatrix = multiplyMat(mvMatrix, scalingMatrix(sx, sy, sz));//Basically scaling the existing matrix or resizing it! 
+    // console.log(mvMatrix);
 
     // Passing the Model View Matrix to apply the current transformation
     const mvUniform = gl.getUniformLocation(shaderProgram, "uMVMatrix");
@@ -66,8 +66,8 @@ function drawScene() {
     // mvMatrix = translateMat(mvMatrix, 0, 0, globalTz/30);
     // mvMatrix = rotateY(mvMatrix, globalYY/1441);
     // mvMatrix = rotateX(mvMatrix, globalXX/270);
-    mvMatrix = mult(mvMatrix, rotationYYMatrix(globalYY));
-    mvMatrix = mult(mvMatrix, rotationXXMatrix(globalXX));
+    mvMatrix = multiplyMat(mvMatrix, rotationYYMatrix(globalYY));
+    mvMatrix = multiplyMat(mvMatrix, rotationXXMatrix(globalXX));
     // Draw models
 
     drawField(mvMatrix);

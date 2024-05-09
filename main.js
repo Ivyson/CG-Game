@@ -232,7 +232,7 @@ function setEventListeners() {
         break;
       // Left
       case 37://I need to implement the rotation matrix according such that Pacmanturns to the right 
-        pacman.updateDirection(-1, 0, key);
+        pacman.updateDirection(-1, 0, key); //-1 Is for changing direction to 
         break;
       // Up
       case 38: //Pacman needs to look up 

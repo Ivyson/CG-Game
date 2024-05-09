@@ -53,18 +53,18 @@ function createmat4()
     return m;
 }
 
-function mult( u, v )
+function multiplyMat( u, v )
 {
     var result = [];
 
     if ( u.matrix && v.matrix ) {
         if ( u.length != v.length ) {
-            throw "mult(): trying to add matrices of different dimensions";
+            throw "multiplyMat(): trying to add matrices of different dimensions";
         }
 
         for ( var i = 0; i < u.length; ++i ) {
             if ( u[i].length != v[i].length ) {
-                throw "mult(): trying to add matrices of different dimensions";
+                throw "multiplyMat(): trying to add matrices of different dimensions";
             }
         }
 
@@ -86,7 +86,7 @@ function mult( u, v )
     }
     else {
         if ( u.length != v.length ) {
-            throw "mult(): vectors are not the same dimension";
+            throw "multiplyMat(): vectors are not the same dimension";
         }
 
         for ( var i = 0; i < u.length; ++i ) {
