@@ -15,4 +15,4 @@
 15. Resourceful Game sounds: https://www.sounds-resource.com/gamecube/pacmanvs/sound/50660/
 16. 189 Boxes were used to render the food of this game! with help of Matrices, Translating one box to the other point --Not an activity---
 17. Add Perspective to the game Change the view on the event listener on the Movement.js File -- Working On it --- ---Done---
-18. Add a functionality to rotate the the Pacman According to a button Press on the Maze file in the CharacterConstructor function 
+18. Add a functionality to rotate the the Pacman According to a button Press on the Maze file in the CharacterConstructor function --Needs to work on this now--- 
