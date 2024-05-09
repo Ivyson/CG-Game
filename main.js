@@ -295,7 +295,6 @@ function pauseOrContinuousGame() {
 }
 
 function initCanvas() {
-  // const canvas = document.querySelector("#my-canvas");
   let canvas = document.querySelector('canvas');
   initWebGL(canvas);
   shaderProgram = programs(gl);
@@ -338,14 +337,3 @@ function runWebGL() {
 }
 
 window.onload = runWebGL();
-// let webgl;
-// function createCanvas(){
-// let canvas = document.querySelector('canvas');
-//  if(canvas == null)
-// {
-// canvas = document.createElement('canvas');
-// document.body.appendChild(canvas);
-// }
-// }
-
-// createCanvas();
