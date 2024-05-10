@@ -152,8 +152,7 @@ function restartGame() {
 }
 
 function enableSuperModeEnv() {
-
-//     // Enable super mode timer
+    // Enable super mode timer
     interval = setInterval(function () {
         counter--;
         if (counter === 0) {
