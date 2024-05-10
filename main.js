@@ -159,9 +159,9 @@ function enableSuperModeEnv() {
         if (counter === 0) {
             superMode = false;
 
-//             // Respawn dead ghosts
+            // Respawn dead ghosts
             for (let i = 0; i < deadGhosts.length; i++)
-                ghosts.push(deadGhosts[i]);
+            ghosts.push(deadGhosts[i]);
             ghosts = ghosts.concat(deadGhosts);
             deadGhosts = [];
 
@@ -178,7 +178,7 @@ async function tick() {
   requestAnimFrame(tick);
 
   // Render the viewport
-  drawScene();
+  drawScene(); //the async functions ensures that the instructionsin here are run in order and they wait for each other to be done instead of being pipelined..
   await sleep(5000);
 
   // Compute new pacman move
