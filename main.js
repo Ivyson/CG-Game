@@ -45,7 +45,6 @@ let counter;
 let counterCopy = null;
 let remainingLives = null;
 
-//let lastTime = 0; //Need to remove this part,Not useful anymore
 
 function initWebGL(canvas) {
   // Get WebGL context
@@ -56,7 +55,7 @@ function initWebGL(canvas) {
   gl.clearColor(0.0, 0.0, 0.0, 0.0);
 
   // Enable face culling and depth test
-  gl.enable(gl.CULL_FACE);
+  gl.enable(gl.CULL_FACE); //Cull Face Ensures that the front Face is rendered before he backface
   gl.enable(gl.DEPTH_TEST);
 
   if (!gl) {
