@@ -47,7 +47,7 @@ function drawScene() {
 
     let i;
     let mvMatrix = createIdentityMatrix();
-    console.log(mvMatrix); //Create Identity Matrix Is Working
+    // console.log(mvMatrix); //Create Identity Matrix Is Working
     // let mvMatrix;
 
     // Clear color buffer
@@ -62,7 +62,7 @@ function drawScene() {
 
     // Global transformations
     mvMatrix = translationMatrix( 0, 0, globalTz);
-    console.log(globalTz,"Tz global");
+    // console.log(globalTz,"Tz global");
     // mvMatrix = translateMat(mvMatrix, 0, 0, globalTz/30);
     // mvMatrix = rotateY(mvMatrix, globalYY/1441);
     // mvMatrix = rotateX(mvMatrix, globalXX/270);

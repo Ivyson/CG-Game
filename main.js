@@ -44,7 +44,6 @@ let counter;
 let counterCopy = null;
 let remainingLives = null;
 
-//let lastTime = 0; //Need to remove this part,Not useful anymore
 
 function initWebGL(canvas) {
   // Get WebGL context
@@ -55,7 +54,7 @@ function initWebGL(canvas) {
   gl.clearColor(0.0, 0.0, 0.0, 0.0);
 
   // Enable face culling and depth test
-  gl.enable(gl.CULL_FACE);
+  gl.enable(gl.CULL_FACE); //Cull Face Ensures that the front Face is rendered before he backface
   gl.enable(gl.DEPTH_TEST);
 
   if (!gl) {
@@ -115,7 +114,7 @@ function endGame(won, sound) {
   document.getElementById("result").innerHTML = `${result} Score: ${score}`;
   document.getElementById("score").innerHTML = "";
   document.getElementById("remainingLives").innerHTML = "";
-  document.getElementById("restart").style.display = "block";
+  // document.getElementById("restart").style.display = "block";
 
   // Play death or winning sound
   sound.play();
@@ -123,7 +122,7 @@ function endGame(won, sound) {
 
 function restartGame() {
   // Restart game mode if the game has already started
-  if(started){
+  // if(started){
     console.log("Restarting Game....");
   score = 0;
   remainingFood = 0;
@@ -144,24 +143,23 @@ function restartGame() {
   gameOver = false;
   gameWin = false;
   superMode = false;
-  }
-  else{
-    console.log("Cannot restart if the game hasn't started");
-  }
+  // }
+  // else{
+    // console.log("Cannot restart if the game hasn't started");
+  // }
   
 }
 
 function enableSuperModeEnv() {
-
-//     // Enable super mode timer
+    // Enable super mode timer
     interval = setInterval(function () {
         counter--;
         if (counter === 0) {
             superMode = false;
 
-//             // Respawn dead ghosts
+            // Respawn dead ghosts
             for (let i = 0; i < deadGhosts.length; i++)
-                ghosts.push(deadGhosts[i]);
+            ghosts.push(deadGhosts[i]);
             ghosts = ghosts.concat(deadGhosts);
             deadGhosts = [];
 
@@ -178,7 +176,7 @@ async function tick() {
   requestAnimFrame(tick);
 
   // Render the viewport
-  drawScene();
+  drawScene(); //the async functions ensures that the instructionsin here are run in order and they wait for each other to be done instead of being pipelined..
   await sleep(5000);
 
   // Compute new pacman move
@@ -260,7 +258,7 @@ function removeImage() {
 function setGameScreen() {
   // Game is running
   started = true;
-  remainingLives = 5;
+  remainingLives = 1;
   // Set game screen
   document.querySelector("#welcome-screen").style.display = "none";
   document.querySelector("#game").style.display = "block";
@@ -330,8 +328,7 @@ async function fetchShaders() {
 }
 
 function runWebGL() {
-  document.querySelector("#remainingLives").innerHTML =
-    "Remaining Lives : " + remainingLives;
+  document.querySelector("#remainingLives").innerHTML = "Remaining Lives : " + remainingLives;
   fetchShaders();
 }
 

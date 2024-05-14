@@ -37,6 +37,12 @@ To test, Play or experiment with this game, Please follow the following steps:
 - A code editor (optional, if you wish to modify the code).
 - This code was only Tested on Google Chrome, Microsoft Edge and was not really functioning well on Mozilla Firefox. Not really Tested on Safari and any other browser, I would Appreciate feedback on how it works if you tried it on a different Browser.
 
+# Bugs
+1. PacMan is not rotating... The pacman Avatar is supposed to change texture to a pacman faced up when button up pressed etc...
+2. Collision only works best inside the Ghosts Special Place (Inside the bricks)
+3. The Ghosts are not having the algorithm for following Pacman
+4. When The Pause button is pressed, then the game starts misbehaving...
+
 ## Contribution
 
 This project is part of the Computer Graphics course at Cape Peninsula University of Technology. Given the limited time for completion, there may be bugs, and improvements are welcome. Contributing to open-source projects is a great learning opportunity, so your input is invaluable for educational purposes and further exploration.
