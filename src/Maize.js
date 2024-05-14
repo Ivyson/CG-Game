@@ -13,13 +13,13 @@ let field_structure = [
     [w, f, f, f, f, f, f, f, f, w, f, f, f, f, f, f, f, f, w],
     [w, s, w, w, f, w, w, w, f, w, f, w, w, w, f, w, w, s, w],
     [w, f, w, w, f, w, w, w, f, w, f, w, w, w, f, w, w, f, w],
-    [w, f, f, f, sp, f, f, f, f, f, f, f, f, f, f, f, f, f, w],
+    [w, f, f, f, f, f, f, f, f, f, f, f, f, f, f, f, f, f, w],
     [w, f, w, w, f, w, f, w, w, w, w, w, f, w, f, w, w, f, w],
     [w, f, f, f, f, w, f, f, f, w, f, f, f, w, f, f, sp, f, w],
     [w, w, w, w, f, w, w, w, f, w, f, w, w, w, f, w, w, w, w],
     [n, n, n, w, f, w, f, f, f, f, f, f, f, w, f, w, n, n, n],
     [w, w, w, w, f, w, f, w, w, f, w, w, f, w, f, w, w, w, w],
-   [p, f, f, f, f, f, f, w, sp, sp, sp, w, f, f, f, sp, f, f, p],
+   [p, f, f, w, f, f, f, w, sp, sp, sp, w, f, f, f, w, f, f, p],
     [w, w, w, w, f, w, f, w, w, w, w, w, f, w, f, w, w, w, w],
     [n, n, n, w, f, w, f, f, f, f, f, f, f, w, f, w, n, n, n],
     [w, w, w, w, f, w, f, w, w, w, w, w, f, w, f, w, w, w, w],
@@ -29,7 +29,7 @@ let field_structure = [
     [w, w, f, w, f, w, f, w, w, w, w, w, f, w, f, w, f, w, w],
     [w, f, f, s, f, w, f, f, f, w, f, f, f, w, f, s, f, f, w],
     [w, f, w, w, w, w, w, w, f, w, f, w, w, w, w, w, w, f, w],
-    [w, f, f, sp, f, f, f, f, sp, f, f, f, sp, f, f, f, f, f, w],
+    [w, f, f, f, f, f, f, f, f, f, f, f, f, f, f, f, f, f, w],
     [w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w]
 ];
 
