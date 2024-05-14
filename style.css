@@ -5,6 +5,7 @@
 
 .body {
     background: black;
+    /* background-image: url(assets/Background.jpeg); */
     width: 100%;
     height: 100%;
     display: flex;
@@ -42,7 +43,7 @@
     border: 2px blue solid;
 }
 
-.start-button, #scode {
+.start-button {
     font-family: 'Times New Roman', Times, serif;
     font-size: 30px;
     color: rgb(255, 255, 255);
@@ -91,7 +92,6 @@
 #scode{
     text-decoration: none;
     color:  #7bff00;
-    animation: fadeIn 2s infinite;
 }
 #Thanks{
     align-items: center;

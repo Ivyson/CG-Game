@@ -8,11 +8,11 @@
 8. Try to rotate the pacman avatar according to the movement of choice --Could Not do this due to the deadline --
 9. Ensure that the pacman gif dissapears when game is active       ----Done----
 10. Fix the contradicting textures of the superfood and food --Could Not do this due to the deadline --
-11. The Restart button is not working ----Need to work on this firstly--  --Fixed --
+11. The Restart button is not working ----Need to work on this firstly--  --Fixed --  --Double Fixed... This one is not trustable..... misbehaves a lot
 12. Videoes and all the Material that served as an inspiration for this project: https://www.youtube.com/watch?v=GXlckaGr0Eo&t=1055s&pp=ygUSUGFjbWFuIGh0bWwganMgY3Nz- For designing my maze
 13. The Animate Function that i just added was no longer useful therefore should be removed(Inside the Pacman Logic) --Removed --
 14. For somewhat reason.. The random placing of pacman is not really being randomised  --Fixed ---
 15. Resourceful Game sounds: https://www.sounds-resource.com/gamecube/pacmanvs/sound/50660/
 16. 189 Boxes were used to render the food of this game! with help of Matrices, Translating one box to the other point --Not an activity---
 17. Add Perspective to the game Change the view on the event listener on the Movement.js File -- Working On it --- ---Done---
-18. Add a functionality to rotate the the Pacman According to a button Press on the Maze file in the CharacterConstructor function --Needs to work on this now--- 
+18. Add a functionality to rotate the the Pacman According to a button Press on the Maze file in the CharacterConstructor function --Needs to work on this now--- --Could Not do this due to the deadline --
