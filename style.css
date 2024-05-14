@@ -92,6 +92,7 @@
 #scode{
     text-decoration: none;
     color:  #7bff00;
+    animation: fadeIn 2s infinite;
 }
 #Thanks{
     align-items: center;
