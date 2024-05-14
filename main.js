@@ -23,7 +23,6 @@ let tz = 0.0;
 const angleXX = 0.0;
 const angleYY = 0.0;
 const angleZZ = 0.0;
-
 // Sounds
 const introSound = new Audio("assets/sounds/start.wav");
 const eatingSound = new Audio("assets/sounds/eatfood.wav");

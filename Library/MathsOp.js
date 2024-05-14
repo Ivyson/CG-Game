@@ -25,7 +25,6 @@ return [
 0, 0, 1, 0,
 0, 0, 0, 1
 ];
-//return [1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1];
 }
 function rotateX(matrix, angle) {
     angle = toRadians(angle);
