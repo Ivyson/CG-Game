@@ -259,7 +259,7 @@ function removeImage() {
 function setGameScreen() {
   // Game is running
   started = true;
-  remainingLives = 5;
+  remainingLives = 1;
   // Set game screen
   document.querySelector("#welcome-screen").style.display = "none";
   document.querySelector("#game").style.display = "block";
@@ -329,8 +329,7 @@ async function fetchShaders() {
 }
 
 function runWebGL() {
-  document.querySelector("#remainingLives").innerHTML =
-    "Remaining Lives : " + remainingLives;
+  document.querySelector("#remainingLives").innerHTML = "Remaining Lives : " + remainingLives;
   fetchShaders();
 }
 
