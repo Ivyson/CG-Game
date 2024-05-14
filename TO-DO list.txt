@@ -1,5 +1,5 @@
-1 Fix the lighting     ---Done---    
-2. Fix the sounds
+1 Fix the lighting   ---Done---    
+2. Add the sounds from the https://github.com/diogofferreira/pacman-3d/tree/master/assets guy  -- done --
 3. Use a constant color to get rid of the redness on the super mode  ---Done---
 4. Have a vertex shader on its separate file or folder   ---Done---
 5. Fix the folder system --Fixed --
