@@ -42,6 +42,7 @@ To test, Play or experiment with this game, Please follow the following steps:
 2. Collision only works best inside the Ghosts Special Place (Inside the bricks)
 3. The Ghosts are not having the algorithm for following Pacman
 4. When The Pause button is pressed, then the game starts misbehaving...
+
 ## Contribution
 
 This project is part of the Computer Graphics course at Cape Peninsula University of Technology. Given the limited time for completion, there may be bugs, and improvements are welcome. Contributing to open-source projects is a great learning opportunity, so your input is invaluable for educational purposes and further exploration.
