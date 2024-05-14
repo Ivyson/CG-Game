@@ -77,7 +77,7 @@ let ghosts = [];
 let deadGhosts = [];
 
 
-function FieldBlockConstructor(type, xPos, yPos, zPos) {
+function FieldBlockConstructor(type, xPos, yPos, zPos) {  //This constructor is responsible for populating the maze of the game and handling the co-ordinates system for the maize
     // Block type
     this.type = type;
     // Block coordinates
@@ -141,17 +141,17 @@ function randomCoordinates() {
     } while (field.structure[z][x].type === 'w' || field.structure[z][x].type === 'n');
     return {'x': x - (field.width / 2), 'z': z - (field.height / 2)}
 }
-function buttonDirect(pacdirect)
-{
-    if(pacdirect === 1) ///Pacman is supposed to go up
-    {
+// function buttonDirect(pacdirect)   //This function was supposed to handle the upfacing of Pacman and changing of direction for texture Mapping
+// {
+//     if(pacdirect === 1) ///Pacman is supposed to go up
+//     {
 
-    }
-    if(pacdirect === -1)
-        {
+//     }
+//     if(pacdirect === -1)
+//         {
             
-        }
-}
+//         }
+// }
 function randomCoordinatesGhost() {
     let x, z;
 
