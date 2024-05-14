@@ -115,7 +115,7 @@ function endGame(won, sound) {
   document.getElementById("result").innerHTML = `${result} Score: ${score}`;
   document.getElementById("score").innerHTML = "";
   document.getElementById("remainingLives").innerHTML = "";
-  document.getElementById("restart").style.display = "block";
+  // document.getElementById("restart").style.display = "block";
 
   // Play death or winning sound
   sound.play();
