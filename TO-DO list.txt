@@ -4,11 +4,11 @@
 4. Have a vertex shader on its separate file or folder   ---Done---
 5. Fix the folder system --Fixed --
 6. Have you own files that have the same functionality as the webutils ---Done---
-7. Clean Up the code and make your own comments
-8. Try to rotate the pacman avatar according to the movement of choice
+7. Clean Up the code and make comments
+8. Try to rotate the pacman avatar according to the movement of choice --Could Not do this due to the deadline --
 9. Ensure that the pacman gif dissapears when game is active       ----Done----
-10. Fix the contradicting textures of the superfood and food 
-11. The Restart button is not working ----Need to work on this firstly --Fixed --
+10. Fix the contradicting textures of the superfood and food --Could Not do this due to the deadline --
+11. The Restart button is not working ----Need to work on this firstly--  --Fixed --
 12. Videoes and all the Material that served as an inspiration for this project: https://www.youtube.com/watch?v=GXlckaGr0Eo&t=1055s&pp=ygUSUGFjbWFuIGh0bWwganMgY3Nz- For designing my maze
 13. The Animate Function that i just added was no longer useful therefore should be removed(Inside the Pacman Logic) --Removed --
 14. For somewhat reason.. The random placing of pacman is not really being randomised  --Fixed ---
