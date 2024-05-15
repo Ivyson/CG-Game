@@ -41,7 +41,7 @@ To test, Play or experiment with this game, Please follow the following steps:
 1. PacMan is not rotating... The pacman Avatar is supposed to change texture to a pacman faced up when button up pressed etc...
 2. Collision only works best inside the Ghosts Special Place (Inside the bricks)
 3. The Ghosts are not having the algorithm for following Pacman
-4. When The Pause button is pressed, then the game starts misbehaving...
+4. When The Pause button is pressed, then the game starts misbehaving... --fIXED--
 
 ## Contribution
 
