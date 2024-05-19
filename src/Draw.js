@@ -8,10 +8,6 @@ function drawModel(angleXX, angleYY, angleZZ,
     // Apply all transformations
 
     mvMatrix = multiplyMat(mvMatrix, translationMatrix(tx, ty, tz));
-    // console.log('Trans:',mvMatrix);
-    // console.log('RotZ:',mvMatrix);
-    // console.log('RotY:',mvMatrix);
-    // console.log('Rot:X',mvMatrix);
    mvMatrix = multiplyMat(mvMatrix, rotationZZMatrix(angleZZ)); //Basically rotating the existing matrice towards z.
     mvMatrix = multiplyMat(mvMatrix, rotationYYMatrix(angleYY)); // '''''''''''''''''''''''''''''''''''''''''''''''y,
     mvMatrix = multiplyMat(mvMatrix, rotationXXMatrix(angleXX)); //''''''''''''''''''''''''''''''''''''''''''''''''x
@@ -47,9 +43,6 @@ function drawScene() {
 
     let i;
     let mvMatrix = createIdentityMatrix();
-    // console.log(mvMatrix); //Create Identity Matrix Is Working
-    // let mvMatrix;
-
     // Clear color buffer
     gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
 
@@ -62,10 +55,6 @@ function drawScene() {
 
     // Global transformations
     mvMatrix = translationMatrix( 0, 0, globalTz);
-    // console.log(globalTz,"Tz global");
-    // mvMatrix = translateMat(mvMatrix, 0, 0, globalTz/30);
-    // mvMatrix = rotateY(mvMatrix, globalYY/1441);
-    // mvMatrix = rotateX(mvMatrix, globalXX/270);
     mvMatrix = multiplyMat(mvMatrix, rotationYYMatrix(globalYY));
     mvMatrix = multiplyMat(mvMatrix, rotationXXMatrix(globalXX));
     // Draw models
