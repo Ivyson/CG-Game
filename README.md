@@ -14,7 +14,8 @@ To test, Play or experiment with this game, Please follow the following steps:
   <img src="https://github.com/Ivyson/CG-Game/blob/main/assets/Readme/Intro_Game1.png" alt="alt text" width="50%">
 </p>
 
-
+ - To play the game <a href="https://ivyson.github.io/CG-Game/"> Click Here <\a>
+   
  - To start playing the game, press the **Enter** button.
     - The gameplay screen should look like this:
 <p align="center">
