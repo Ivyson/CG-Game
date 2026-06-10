@@ -134,7 +134,7 @@ function moveGhost(ghost) {
     if (isPacmanCollision(ghost)) {
         if (superMode) {
             // Kill ghost and eat him
-            console.log("Ghost killed.....");
+            // console.log("Ghost killed.....");
             eatGhost(ghost);
         } else {
             // Lost game

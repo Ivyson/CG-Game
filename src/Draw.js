@@ -3,17 +3,14 @@ function drawModel(angleXX, angleYY, angleZZ,
                    tx, ty, tz,
                    mvMatrix,
                    texture) {
-
-
     // Apply all transformations
 
     mvMatrix = multiplyMat(mvMatrix, translationMatrix(tx, ty, tz));
-   mvMatrix = multiplyMat(mvMatrix, rotationZZMatrix(angleZZ)); //Basically rotating the existing matrice towards z.
+    mvMatrix = multiplyMat(mvMatrix, rotationZZMatrix(angleZZ)); //Basically rotating the existing matrice towards z.
     mvMatrix = multiplyMat(mvMatrix, rotationYYMatrix(angleYY)); // '''''''''''''''''''''''''''''''''''''''''''''''y,
     mvMatrix = multiplyMat(mvMatrix, rotationXXMatrix(angleXX)); //''''''''''''''''''''''''''''''''''''''''''''''''x
     mvMatrix = multiplyMat(mvMatrix, scalingMatrix(sx, sy, sz));//Basically scaling the existing matrix or resizing it! 
     // console.log(mvMatrix);
-
     // Passing the Model View Matrix to apply the current transformation
     const mvUniform = gl.getUniformLocation(shaderProgram, "uMVMatrix");
     gl.uniformMatrix4fv(mvUniform, false, new Float32Array(flatten(mvMatrix)));
@@ -25,23 +22,16 @@ function drawModel(angleXX, angleYY, angleZZ,
 
     gl.bindBuffer(gl.ARRAY_BUFFER, cubeVertexTextureCoordBuffer);
     gl.vertexAttribPointer(shaderProgram.textureCoordAttribute, cubeVertexTextureCoordBuffer.itemSize, gl.FLOAT, false, 0, 0);
-
-
     // Apply textures
-
     gl.activeTexture(gl.TEXTURE0);
     gl.bindTexture(gl.TEXTURE_2D, texture);
     gl.uniform1i(shaderProgram.samplerUniform, 0);
-
     // Bind vertices and draw the contents of the vertex buffer
-
     gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, cubeVertexIndexBuffer);
     gl.drawElements(gl.TRIANGLES, cubeVertexIndexBuffer.numItems, gl.UNSIGNED_SHORT, 0);
 }
 
 function drawScene() {
-
-    let i;
     let mvMatrix = createIdentityMatrix();
     // Clear color buffer
     gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
@@ -63,9 +53,8 @@ function drawScene() {
 
     drawChar(pacman, mvMatrix);
 
-    for (i = 0; i < ghosts.length; i++)
+    for (let i = 0; i < ghosts.length; i++)
         drawChar(ghosts[i], mvMatrix);
-
     // Update page's score
     if (!gameOver) {
         document.getElementById('score').innerHTML = "Score : " + score;
@@ -77,7 +66,6 @@ function drawChar(character, mvMatrix) {
     const texture = getCharacterTexture(character);
     drawModel(angleXX, angleYY, angleZZ,  sx, sy, sz,  character.x - (field.width / 2), ty, character.z - (field.height / 2),  mvMatrix,  texture);
 }
-
 
 function getCharacterTexture(character) {
     switch (character.id) {

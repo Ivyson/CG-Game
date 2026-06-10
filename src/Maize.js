@@ -73,7 +73,7 @@ let portals = [];
 
 // Chars objects
 let pacman;
-let ghosts = [];
+let ghosts = []; //Confirm if these are needed here. Looks like they are not beig used anywhere else
 let deadGhosts = [];
 
 
@@ -87,8 +87,9 @@ function FieldBlockConstructor(type, xPos, yPos, zPos) {  //This constructor is 
     this.moves = [];
 }
 
-function CharacterConstructor(id) { //This is a character's Constructor for each and every character on the game
-    // Char coordinates
+function CharacterConstructor(id) {
+  //This is a character's Constructor for each and every character on the game
+  // Char coordinates
     this.x = 0.0;
     this.z = 0.0;
     // Char direction

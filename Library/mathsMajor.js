@@ -92,7 +92,6 @@ function multiplyMat( u, v )
         for ( var i = 0; i < u.length; ++i ) {
             result.push( u[i] * v[i] );
         }
-
         return result;
     }
 }
@@ -169,55 +168,37 @@ function rotationXXMatrix( degrees )
 function rotationYYMatrix( degrees )
 {
     m = createmat4();
-    
     m[0][0] = Math.cos( radians( degrees ) );
-    
     m[0][2] = Math.sin( radians( degrees ) );
-    
     m[2][0] = -Math.sin( radians( degrees ) );
-    
     m[2][2]    = Math.cos( radians( degrees ) )
-    
     return m;    
 }
 
 function rotationZZMatrix( degrees )
 {
     m = createmat4();
-    
     m[0][0] = Math.cos( radians( degrees ) );
-    
     m[0][1] = -Math.sin( radians( degrees ) );
-    
     m[1][0] = Math.sin( radians( degrees ) );
-    
     m[1][1]    = Math.cos( radians( degrees ) )
-    
     return m;    
 }
 
 function scalingMatrix( sx, sy, sz )
 {
     m = createmat4();
-    
     m[0][0] = sx;
-    
     m[1][1] = sy;
-    
     m[2][2] = sz;    
-    
     return m;    
 }
 
 function translationMatrix( tx, ty, tz )
 {
     m = createmat4();
-    
     m[0][3] = tx;
-    
     m[1][3] = ty;
-    
     m[2][3] = tz;    
-    
     return m;    
 }

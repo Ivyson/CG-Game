@@ -122,8 +122,10 @@ function endGame(won, sound) {
 
 function restartGame() {
   // Restart game mode if the game has already started
-  // if(started){
-    console.log("Restarting Game....");
+  if(started){
+
+  }
+    // console.log("Restarting Game....");
   score = 0;
   remainingFood = 0;
   remainingLives = 3;
@@ -303,24 +305,24 @@ async function fetchShaders() {
     throw new Error("No vs Shader Found");
   }
   vsShader = await responseVs.text();
-  console.log(vsShader, "Is Vs Shader");
+  // console.log(vsShader, "Is Vs Shader");
 
   const responseFs = await fetch("src/fsShader.shader");
   if (!responseFs.ok) {
     throw new Error("No fs Shader Found");
   }
   fsShader = await responseFs.text();
-  console.log(fsShader, "Is Fragment");
+  // console.log(fsShader, "Is Fragment");
   document.getElementById("shader-fs").innerHTML = fsShader;
   document.getElementById("shader-vs").innerHTML = vsShader;
-  console.log(
-    document.getElementById("shader-fs").innerHTML,
-    "Inner html thing"
-  );
-  console.log(
-    document.getElementById("shader-vs").innerHTML,
-    "Inner html thing2"
-  );
+  // console.log(
+  //   document.getElementById("shader-fs").innerHTML,
+  //   "Inner html thing"
+  // );
+  // console.log(
+  //   document.getElementById("shader-vs").innerHTML,
+  //   "Inner html thing2"
+  // );
   initCanvas();
   setEventListeners();
   initCubeBuffer();

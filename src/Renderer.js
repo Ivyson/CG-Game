@@ -1,3 +1,5 @@
+let ghosts_images = ["assets/ghosts/gh1.png","assets/ghosts/gh3.png", "assets/ghosts/gh2.png", "assets/ghosts/gh4.png"];
+let ghostTextures = [];
 let wallTexture;
 let foodTexture;
 let superFoodTexture;
@@ -13,7 +15,7 @@ const sy = 0.5;
 const sz = 0.5;
 
 // Vertices defining the faces
-const vertices = [
+const vertices = new Float32Array([
     // Front face
     -1.0, -1.0, 1.0,
     1.0, -1.0, 1.0,
@@ -49,10 +51,10 @@ const vertices = [
     -1.0, -1.0, 1.0,
     -1.0, 1.0, 1.0,
     -1.0, 1.0, -1.0
-];
+]);
 
 // Vertex indices defining the triangles
-const cubeVertexIndices = [
+const cubeVertexIndices = new Uint16Array([
 
     0, 1, 2, 0, 2, 3,    // Front face
 
@@ -65,11 +67,10 @@ const cubeVertexIndices = [
     16, 17, 18, 16, 18, 19, // Right face
 
     20, 21, 22, 20, 22, 23  // Left face
-];
+]);
 
 // Texture coordinates for the quadrangular faces
-const textureCoords = [
-
+const textureCoords = new Float32Array([
     // Front face
     0.0, 0.0,
     1.0, 0.0,
@@ -105,7 +106,7 @@ const textureCoords = [
     1.0, 0.0,
     1.0, 1.0,
     0.0, 1.0,
-];
+]);
 
 
 function initCubeBuffer() {
@@ -113,7 +114,7 @@ function initCubeBuffer() {
     // Coordinates
     cubeVertexPositionBuffer = gl.createBuffer();
     gl.bindBuffer(gl.ARRAY_BUFFER, cubeVertexPositionBuffer);
-    gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(vertices), gl.STATIC_DRAW);
+    gl.bufferData(gl.ARRAY_BUFFER, vertices, gl.STATIC_DRAW);
     cubeVertexPositionBuffer.itemSize = 3;
     cubeVertexPositionBuffer.numItems = vertices.length / 3;
 
@@ -121,7 +122,7 @@ function initCubeBuffer() {
 
     cubeVertexTextureCoordBuffer = gl.createBuffer();
     gl.bindBuffer(gl.ARRAY_BUFFER, cubeVertexTextureCoordBuffer);
-    gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(textureCoords), gl.STATIC_DRAW);
+    gl.bufferData(gl.ARRAY_BUFFER, textureCoords, gl.STATIC_DRAW);
     cubeVertexTextureCoordBuffer.itemSize = 2;
     cubeVertexTextureCoordBuffer.numItems = 24;
 
@@ -129,7 +130,7 @@ function initCubeBuffer() {
 
     cubeVertexIndexBuffer = gl.createBuffer();
     gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, cubeVertexIndexBuffer);
-    gl.bufferData(gl.ELEMENT_ARRAY_BUFFER, new Uint16Array(cubeVertexIndices), gl.STATIC_DRAW);
+    gl.bufferData(gl.ELEMENT_ARRAY_BUFFER, cubeVertexIndices, gl.STATIC_DRAW);
     cubeVertexIndexBuffer.itemSize = 1;
     cubeVertexIndexBuffer.numItems = 36;
 }
@@ -161,10 +162,13 @@ function initTextures() {
     pacmanTexture = createTextureWithAsset("assets/PacmanAvatar.png")
 
     // Ghosts textures
-    ghost1Texture = createTextureWithAsset("assets/ghosts/gh1.png")
-    ghost2Texture = createTextureWithAsset("assets/ghosts/gh2.png")
-    ghost3Texture = createTextureWithAsset("assets/ghosts/gh3.png")
-    ghost4Texture = createTextureWithAsset("assets/ghosts/gh4.png")
+  for(let i = 0; i < ghosts_images.length; i++){
+    ghostTextures[i] = createTextureWithAsset(ghosts_images[i]);
+  }
+    // ghost1Texture = createTextureWithAsset("assets/ghosts/gh1.png")
+    // ghost2Texture = createTextureWithAsset("assets/ghosts/gh2.png")
+    // ghost3Texture = createTextureWithAsset("assets/ghosts/gh3.png")
+    // ghost4Texture = createTextureWithAsset("assets/ghosts/gh4.png")
 }
 
 function createTextureWithAsset(asset) {
@@ -173,12 +177,11 @@ function createTextureWithAsset(asset) {
     texture.image.onload = function () {
         handleLoadedTexture(texture)
     }
-
     texture.image.src = asset;
-
     return texture
 }
 function isPower(value)
 {
+  // This checks if the number is is can be represented using 2^n
 	return( value & (value -1)) === 0;
 }
