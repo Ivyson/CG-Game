@@ -4,6 +4,7 @@ let shaderProgram = null;
 let cubeVertexPositionBuffer = null;
 let cubeVertexTextureCoordBuffer = null;
 let cubeVertexIndexBuffer = null;
+let introDelay = false; 
 // let cubeVertexNormalBuffer = null;
 
 // Global transformations parameters
@@ -47,6 +48,7 @@ function initWebGL(canvas) {
   gl = canvas.getContext("webgl") || canvas.getContext("experimental-webgl");
   if (!gl) {
     alert("Your Browser does not really support webgl");
+    return null;
   }
   // Set viewport to canvas size with black background
   gl.viewport(0, 0, canvas.width, canvas.height);
@@ -88,6 +90,7 @@ function initField() {
 
   // Create ghosts and render them in random positions
   for (let i = 1; i <= 4; i++) {
+    if(gameWin) break;
     const ghost = new CharacterConstructor(`G${i}`);
     const coords = randomCoordinatesGhost();
     ghost.init(coords["x"], coords["z"]);
@@ -149,10 +152,11 @@ function enableSuperModeEnv() {
             superMode = false;
 
             // Respawn dead ghosts
-            for (let i = 0; i < deadGhosts.length; i++)
-            ghosts.push(deadGhosts[i]);
-            ghosts = ghosts.concat(deadGhosts);
-            deadGhosts = [];
+            if (deadGhosts.length > 0) {
+                ghosts.push(...deadGhosts);
+                ghosts.sort((a, b) => a.id.localeCompare(b.id));
+                deadGhosts = [];
+            }
 
             document.getElementById('super-mode').innerHTML = "";
             clearInterval(interval);
@@ -170,11 +174,16 @@ async function tick() {
   requestAnimationFrame(tick); //Every Browser supports this now
   // Render the viewport
   drawScene(); //the async functions ensures that the instructionsin here are run in order and they wait for each other to be done instead of being pipelined..
-  await sleep(5000); // This is used to initially pause the game at start time!!!
+  if(!introDelay){
+    await sleep(5000); // This is used to initially pause the game at start time!!!
+    introDelay = true;
+  }
   // Compute new pacman move
-  movePacman();
-  // Compute new ghost moves
-  ghosts.forEach((ghost) => moveGhost(ghost));
+  if(!paused){ // Only move characters if the game is not paused
+    movePacman();
+     // Compute new ghost moves
+    ghosts.forEach((ghost) => moveGhost(ghost));
+  }
 }
 
 function setEventListeners() {
@@ -262,14 +271,13 @@ function setGameScreen() {
 
 function pauseOrContinuousGame() {
   if (paused) {
-    field.speed = speedCopy;
+    field.speed = 0.25;
     if (superMode) {
       counter = counterCopy;
       enableSuperModeEnv();
     }
     paused = false;
   } else {
-    speedCopy = field.speed;
     field.speed = 0;
     if (superMode) {
       counterCopy = counter;

@@ -67,6 +67,6 @@ function programs(gl) {
 
     shaderProgram.pMatrixUniform = gl.getUniformLocation(shaderProgram, "uPMatrix");
     shaderProgram.mvMatrixUniform = gl.getUniformLocation(shaderProgram, "uMVMatrix");
-
+    shaderProgram.samplerUniform = gl.getUniformLocation(shaderProgram, "uSampler");
     return shaderProgram;
 }

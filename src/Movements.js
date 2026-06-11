@@ -122,7 +122,7 @@ function handlePacmanEating() {
 
     // // Eat the food, update score and remaining food
     if (pacman.currentBlock.type === 'f' || pacman.currentBlock.type === 's') {
-        score += pacman.currentBlock.type === 'f' ? 1 : 1;
+        score += pacman.currentBlock.type === 'f' ? 1 : 5; // f is for normal food else its `s` for supe mode
         pacman.currentBlock.type = '';
         eatingSound.play();
         remainingFood--;
@@ -227,10 +227,22 @@ function spawnInRandomPortal(character) {
     let nextPortal = null;
 
     // Find a new random portal to spawn, different from the current one
-    do {
-        nextPortal = portals[Math.floor(Math.random() * portals.length)];
-    } while (nextPortal === character.currentBlock)
-
+    let index = 0;
+    do { // I know that we have two portals, at x = 0 and at x = 18, So, 
+        // I can cut the guess game and just check if the current portal is the first one, then spawn in the second one, and vice versa. 
+        // But I wanted to make it more generic, in case we want to add more portals in the future. 
+        // Even if we had more than 2 portals, we still do not need randomisation, we need pairing, 
+        // If user is at portal 1, then spawn in portal 2, if user is at portal 2, then spawn in portal 1, if user is at portal 3, then spawn in portal 4, and so on.
+        // So, we need to implement that kind of pairing instead of randomising. 
+        // Leave the while loop, it may use more resources
+        if (index >= portals.length) {
+            index = 0;
+        }
+        
+        nextPortal = portals[index]; // This is defined in Maize.js line 191. It is an array of all the portals on the field.
+        index++;
+    } while (nextPortal === character.currentBlock && index < portals.length)
+    console.log(character.id + " teleported from portal (" + character.currentBlock.x + "," + character.currentBlock.z + ") to portal (" + nextPortal.x + "," + nextPortal.z + ")");
     // Change current block to new spawn block
     character.currentBlock = nextPortal;
 

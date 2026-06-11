@@ -96,7 +96,6 @@ function multiplyMat( u, v )
 
         for ( var i = 0; i < u.length; ++i ) {
             result.push( [] );
-
             for ( var j = 0; j < v.length; ++j ) {
                 var sum = 0.0;
                 for ( var k = 0; k < u.length; ++k ) {
