@@ -32,7 +32,11 @@ let field_structure = [
     [w, f, f, f, f, f, f, f, f, f, f, f, f, f, f, f, f, f, w],
     [w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w]
 ];
-
+//  Key Valaues: 13 -> Enter
+// 37 -> Left
+// 38 -> Up
+// 39 -> Right
+// 40 -> Down
 const possibleMoves = [
     {
         'x': 1,
@@ -77,7 +81,8 @@ let ghosts = []; //Confirm if these are needed here. Looks like they are not bei
 let deadGhosts = [];
 
 
-function FieldBlockConstructor(type, xPos, yPos, zPos) {  //This constructor is responsible for populating the maze of the game and handling the co-ordinates system for the maize
+function FieldBlockConstructor(type, xPos, yPos, zPos) {  
+    //This constructor is responsible for populating the maze of the game and handling the co-ordinates system for the maize
     // Block type
     this.type = type;
     // Block coordinates

@@ -4,15 +4,12 @@ let shaderProgram = null;
 let cubeVertexPositionBuffer = null;
 let cubeVertexTextureCoordBuffer = null;
 let cubeVertexIndexBuffer = null;
-let cubeVertexNormalBuffer = null;
+// let cubeVertexNormalBuffer = null;
 
 // Global transformations parameters
 let globalTz = -30.0;
 let globalXX = -270.0;
 let globalYY = -1441;
-
-let vsShader;
-let fsShader;
 
 // Translation vector
 let tx = 0.0;
@@ -48,7 +45,9 @@ let remainingLives = null;
 function initWebGL(canvas) {
   // Get WebGL context
   gl = canvas.getContext("webgl") || canvas.getContext("experimental-webgl");
-
+  if (!gl) {
+    alert("Your Browser does not really support webgl");
+  }
   // Set viewport to canvas size with black background
   gl.viewport(0, 0, canvas.width, canvas.height);
   gl.clearColor(0.0, 0.0, 0.0, 0.0);
@@ -57,9 +56,7 @@ function initWebGL(canvas) {
   gl.enable(gl.CULL_FACE); //Cull Face Ensures that the front Face is rendered before he backface
   gl.enable(gl.DEPTH_TEST);
 
-  if (!gl) {
-    alert("Your Browser does not really support webgl");
-  }
+  
 }
 
 function initField() {
@@ -82,7 +79,6 @@ function initField() {
 
   // Compute all possible movements
   computePossibleMoves(field_structure, field.structure);
-
   // Create pacman and render it in a random position
   pacman = new CharacterConstructor("Pac");
   const pacCoords = randomCoordinates();
@@ -121,14 +117,9 @@ function endGame(won, sound) {
 }
 
 function restartGame() {
-  // Restart game mode if the game has already started
-  if(started){
-
-  }
-    // console.log("Restarting Game....");
   score = 0;
   remainingFood = 0;
-  remainingLives = 3;
+  remainingLives = 1; //Re-instated the value from 3 to 1, for consistency.....
 
   // Restart game infos and super mode timer, if set
   clearInterval(interval);
@@ -137,25 +128,23 @@ function restartGame() {
 
   // Start game rendering
   initField();
-
   // Playing intro sound first
   introSound.play();
-
   // Update game state
   gameOver = false;
   gameWin = false;
   superMode = false;
-  // }
-  // else{
-    // console.log("Cannot restart if the game hasn't started");
-  // }
-  
+  paused = false;
+  speedCopy = null;
+  counterCopy = null;
+
+  // lastMoveTime = 0;
 }
 
 function enableSuperModeEnv() {
     // Enable super mode timer
     interval = setInterval(function () {
-        counter--;
+        counter--; // Keeps track of how
         if (counter === 0) {
             superMode = false;
 
@@ -173,18 +162,19 @@ function enableSuperModeEnv() {
     }, 1000);
 }
 
+function sleep(ms) {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+}
 
 async function tick() {
-  requestAnimFrame(tick);
-
+  requestAnimationFrame(tick); //Every Browser supports this now
   // Render the viewport
   drawScene(); //the async functions ensures that the instructionsin here are run in order and they wait for each other to be done instead of being pipelined..
-  await sleep(5000);
-
+  await sleep(5000); // This is used to initially pause the game at start time!!!
   // Compute new pacman move
   movePacman();
   // Compute new ghost moves
-  ghosts.map((ghost) => moveGhost(ghost));
+  ghosts.forEach((ghost) => moveGhost(ghost));
 }
 
 function setEventListeners() {
@@ -249,9 +239,6 @@ function setEventListeners() {
   });
 }
 
-function sleep(ms) {
-  return new Promise((resolve) => setTimeout(resolve, ms));
-}
 function removeImage() {
   let image = document.querySelector("img");
   image.style.display = "none";
@@ -299,39 +286,12 @@ function initCanvas() {
   shaderProgram = programs(gl);
 }
 
-async function fetchShaders() {
-  const responseVs = await fetch("src/vsShader.shader");
-  if (!responseVs.ok) {
-    throw new Error("No vs Shader Found");
-  }
-  vsShader = await responseVs.text();
-  // console.log(vsShader, "Is Vs Shader");
-
-  const responseFs = await fetch("src/fsShader.shader");
-  if (!responseFs.ok) {
-    throw new Error("No fs Shader Found");
-  }
-  fsShader = await responseFs.text();
-  // console.log(fsShader, "Is Fragment");
-  document.getElementById("shader-fs").innerHTML = fsShader;
-  document.getElementById("shader-vs").innerHTML = vsShader;
-  // console.log(
-  //   document.getElementById("shader-fs").innerHTML,
-  //   "Inner html thing"
-  // );
-  // console.log(
-  //   document.getElementById("shader-vs").innerHTML,
-  //   "Inner html thing2"
-  // );
+function runWebGL() {
+  document.querySelector("#remainingLives").innerHTML = "Remaining Lives : " + remainingLives;
   initCanvas();
   setEventListeners();
   initCubeBuffer();
   initTextures();
 }
 
-function runWebGL() {
-  document.querySelector("#remainingLives").innerHTML = "Remaining Lives : " + remainingLives;
-  fetchShaders();
-}
-
-window.onload = runWebGL();
+window.onload = runWebGL; //removed Parentheses which causes the webgl pipeline to start immediately?

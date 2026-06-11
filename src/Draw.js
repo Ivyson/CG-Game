@@ -72,13 +72,13 @@ function getCharacterTexture(character) {
         case 'Pac':
             return pacmanTexture;
         case 'G1':
-            return ghost1Texture;
+            return ghostTextures[0];
         case 'G2':
-            return ghost2Texture;
+            return ghostTextures[1];
         case 'G3':
-            return ghost3Texture;
+            return ghostTextures[2];
         case 'G4':
-            return ghost4Texture;
+            return ghostTextures[3];
         default:
             return null;
     }

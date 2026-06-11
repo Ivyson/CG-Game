@@ -16,7 +16,7 @@ function getShader(gl, id) {
     const shaderType = getShaderType(gl, shaderTypeString);
     const shaderSource = getShaderSource(id);
 
-    return shaderType && shaderSource ? compileShader(gl, shaderSource, shaderType) : null;
+    return (shaderType && shaderSource) ? compileShader(gl, shaderSource, shaderType) : null;
 }
 
 function compileShader(gl, source, type) {
