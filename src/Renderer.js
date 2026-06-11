@@ -4,10 +4,6 @@ let wallTexture;
 let foodTexture;
 let superFoodTexture;
 let pacmanTexture;
-let ghost1Texture;
-let ghost2Texture;
-let ghost3Texture;
-let ghost4Texture;
 
 // Scaling factors
 const sx = 0.5;
@@ -165,10 +161,6 @@ function initTextures() {
   for(let i = 0; i < ghosts_images.length; i++){
     ghostTextures[i] = createTextureWithAsset(ghosts_images[i]);
   }
-    // ghost1Texture = createTextureWithAsset("assets/ghosts/gh1.png")
-    // ghost2Texture = createTextureWithAsset("assets/ghosts/gh2.png")
-    // ghost3Texture = createTextureWithAsset("assets/ghosts/gh3.png")
-    // ghost4Texture = createTextureWithAsset("assets/ghosts/gh4.png")
 }
 
 function createTextureWithAsset(asset) {
@@ -179,9 +171,4 @@ function createTextureWithAsset(asset) {
     }
     texture.image.src = asset;
     return texture
-}
-function isPower(value)
-{
-  // This checks if the number is is can be represented using 2^n
-	return( value & (value -1)) === 0;
 }
