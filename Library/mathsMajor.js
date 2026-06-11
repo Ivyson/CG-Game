@@ -8,6 +8,32 @@ function radians( degrees ) {
     return degrees * Math.PI / 180.0;
 }
 
+let PerspectiveCam = (angle, aspectRatio, near, far) => {
+    angletorad = toRadians(angle); //Converting the angle in degrees  to radians  
+    let FOV = 1/(Math.tan(angletorad/2));
+    let range = far - near;
+    return ([
+        FOV*(1/aspectRatio), 0, 0, 0,
+        0, FOV, 0, 0,
+        0, 0, -(near+far)/range, -2*(near*far)/range,
+        0, 0, -1, 0
+    ]);
+};
+function createIdentityMatrix() {
+return new Float32Array([
+1, 0, 0, 0,
+0, 1, 0, 0,
+0, 0, 1, 0,
+0, 0, 0, 1
+]);
+}
+
+
+function toRadians(theta)
+{
+    return theta*(Math.PI/180);
+}
+
 
 function vec4()
 {
