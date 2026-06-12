@@ -11,7 +11,7 @@ let introDelay = false;
 let globalTz = -30.0;
 let globalXX = -270.0;
 let globalYY = -1441;
-let portalPositions = { x : [], z: []};
+// let portalPositions = { x : [], z: []};
 
 // Translation vector
 let tx = 0.0;

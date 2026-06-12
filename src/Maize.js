@@ -190,7 +190,7 @@ function createFieldStructure(structure) {
             // Save the portal in the portals array
             if (structure[i][j] === 'p') {
                 portals.push(fieldBlock);
-                console.log("Portal created at (" + fieldBlock.x + "," + fieldBlock.z + ")");
+                // console.log("Portal created at (" + fieldBlock.x + "," + fieldBlock.z + ")");
             }
 
             // Save the spawn block coordinates
