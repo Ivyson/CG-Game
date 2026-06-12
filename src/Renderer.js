@@ -1,4 +1,4 @@
-let ghosts_images = ["assets/ghosts/gh1.png","assets/ghosts/gh3.png", "assets/ghosts/gh2.png", "assets/ghosts/gh4.png"];
+let ghostsImages = ["assets/ghosts/gh1.png", "assets/ghosts/gh3.png", "assets/ghosts/gh2.png", "assets/ghosts/gh4.png"];
 let ghostTextures = [];
 let wallTexture;
 let foodTexture;
@@ -106,7 +106,6 @@ const textureCoords = new Float32Array([
 
 
 function initCubeBuffer() {
-
     // Coordinates
     cubeVertexPositionBuffer = gl.createBuffer();
     gl.bindBuffer(gl.ARRAY_BUFFER, cubeVertexPositionBuffer);
@@ -114,8 +113,7 @@ function initCubeBuffer() {
     cubeVertexPositionBuffer.itemSize = 3;
     cubeVertexPositionBuffer.numItems = vertices.length / 3;
 
-    // Textures
-
+    // Texture coordinates
     cubeVertexTextureCoordBuffer = gl.createBuffer();
     gl.bindBuffer(gl.ARRAY_BUFFER, cubeVertexTextureCoordBuffer);
     gl.bufferData(gl.ARRAY_BUFFER, textureCoords, gl.STATIC_DRAW);
@@ -123,7 +121,6 @@ function initCubeBuffer() {
     cubeVertexTextureCoordBuffer.numItems = 24;
 
     // Vertex indices
-
     cubeVertexIndexBuffer = gl.createBuffer();
     gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, cubeVertexIndexBuffer);
     gl.bufferData(gl.ELEMENT_ARRAY_BUFFER, cubeVertexIndices, gl.STATIC_DRAW);
@@ -134,19 +131,18 @@ function initCubeBuffer() {
 
 
 function handleLoadedTexture(texture) {
-        gl.bindTexture(gl.TEXTURE_2D, texture);
-        gl.pixelStorei(gl.UNPACK_FLIP_Y_WEBGL, true);
-        gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, texture.image);
-        gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.LINEAR);
-        gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR);
-        gl.bindTexture(gl.TEXTURE_2D, null);
+    gl.bindTexture(gl.TEXTURE_2D, texture);
+    gl.pixelStorei(gl.UNPACK_FLIP_Y_WEBGL, true);
+    gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, texture.image);
+    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.LINEAR);
+    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR);
+    gl.bindTexture(gl.TEXTURE_2D, null);
 }
 
 
 function initTextures() {
-
     // Wall texture
-    wallTexture = createTextureWithAsset("assets/bounds-copy.jpg")
+    wallTexture = createTextureWithAsset("assets/bounds-copy.jpg");
 
     // Food texture
     foodTexture = createTextureWithAsset("assets/super-food.png");
@@ -155,20 +151,20 @@ function initTextures() {
     superFoodTexture = createTextureWithAsset("assets/super-food.png");
 
     // Pacman texture
-    pacmanTexture = createTextureWithAsset("assets/PacmanAvatar.png")
+    pacmanTexture = createTextureWithAsset("assets/PacmanAvatar.png");
 
     // Ghosts textures
-  for(let i = 0; i < ghosts_images.length; i++){
-    ghostTextures[i] = createTextureWithAsset(ghosts_images[i]);
-  }
+    for (let i = 0; i < ghostsImages.length; i++) {
+        ghostTextures[i] = createTextureWithAsset(ghostsImages[i]);
+    }
 }
 
 function createTextureWithAsset(asset) {
     let texture = gl.createTexture();
     texture.image = new Image();
     texture.image.onload = function () {
-        handleLoadedTexture(texture)
-    }
+        handleLoadedTexture(texture);
+    };
     texture.image.src = asset;
-    return texture
+    return texture;
 }

@@ -4,13 +4,13 @@ function ToArray( args )
 }
 
 
-function radians( degrees ) {
+function radians(degrees) {
     return degrees * Math.PI / 180.0;
 }
 
 let PerspectiveCam = (angle, aspectRatio, near, far) => {
-    angletorad = toRadians(angle); //Converting the angle in degrees  to radians  
-    let FOV = 1/(Math.tan(angletorad/2));
+    const angleToRad = radians(angle); // Convert angle from degrees to radians
+    let FOV = 1 / (Math.tan(angleToRad / 2));
     let range = far - near;
     return ([
         FOV*(1/aspectRatio), 0, 0, 0,
@@ -20,24 +20,16 @@ let PerspectiveCam = (angle, aspectRatio, near, far) => {
     ]);
 };
 function createIdentityMatrix() {
-return new Float32Array([
-1, 0, 0, 0,
-0, 1, 0, 0,
-0, 0, 1, 0,
-0, 0, 0, 1
-]);
+    return new Float32Array([
+        1, 0, 0, 0,
+        0, 1, 0, 0,
+        0, 0, 1, 0,
+        0, 0, 0, 1
+    ]);
 }
 
-
-function toRadians(theta)
-{
-    return theta*(Math.PI/180);
-}
-
-
-function vec4()
-{
-    var result = ToArray( arguments );
+function vec4() {
+    var result = ToArray(arguments);
 
     switch ( result.length ) {
     case 0: result.push( 0.0 );
@@ -49,9 +41,8 @@ function vec4()
     return result.splice( 0, 4 );
 }
 
-function createmat4()
-{
-    var v = ToArray( arguments );
+function createmat4() {
+    var v = ToArray(arguments);
 
     var m = [];
     switch ( v.length ) {
@@ -79,8 +70,7 @@ function createmat4()
     return m;
 }
 
-function multiplyMat( u, v )
-{
+function multiplyMat(u, v) {
     var result = [];
 
     if ( u.matrix && v.matrix ) {
@@ -121,9 +111,8 @@ function multiplyMat( u, v )
     }
 }
 
-function transpose( m )
-{
-    if ( !m.matrix ) {
+function transpose(m) {
+    if (!m.matrix) {
         return "transpose(): trying to transpose a non-matrix";
     }
 
@@ -141,10 +130,9 @@ function transpose( m )
 }
 
 
-function flatten( v )
-{
-    if ( v.matrix === true ) {
-        v = transpose( v );
+function flatten(v) {
+    if (v.matrix === true) {
+        v = transpose(v);
     }
 
     var n = v.length;
@@ -185,45 +173,41 @@ function rotationXXMatrix( degrees )
     
     m[2][1] = Math.sin( radians( degrees ) );
     
-    m[2][2]    = Math.cos( radians( degrees ) )
-    
+    m[2][2] = Math.cos(radians(degrees));
+
     return m;    
 }
 
-function rotationYYMatrix( degrees )
-{
+function rotationYYMatrix(degrees) {
     m = createmat4();
-    m[0][0] = Math.cos( radians( degrees ) );
-    m[0][2] = Math.sin( radians( degrees ) );
-    m[2][0] = -Math.sin( radians( degrees ) );
-    m[2][2]    = Math.cos( radians( degrees ) )
+    m[0][0] = Math.cos(radians(degrees));
+    m[0][2] = Math.sin(radians(degrees));
+    m[2][0] = -Math.sin(radians(degrees));
+    m[2][2] = Math.cos(radians(degrees));
     return m;    
 }
 
-function rotationZZMatrix( degrees )
-{
+function rotationZZMatrix(degrees) {
     m = createmat4();
-    m[0][0] = Math.cos( radians( degrees ) );
-    m[0][1] = -Math.sin( radians( degrees ) );
-    m[1][0] = Math.sin( radians( degrees ) );
-    m[1][1]    = Math.cos( radians( degrees ) )
+    m[0][0] = Math.cos(radians(degrees));
+    m[0][1] = -Math.sin(radians(degrees));
+    m[1][0] = Math.sin(radians(degrees));
+    m[1][1] = Math.cos(radians(degrees));
     return m;    
 }
 
-function scalingMatrix( sx, sy, sz )
-{
+function scalingMatrix(sx, sy, sz) {
     m = createmat4();
     m[0][0] = sx;
     m[1][1] = sy;
-    m[2][2] = sz;    
+    m[2][2] = sz;
     return m;    
 }
 
-function translationMatrix( tx, ty, tz )
-{
+function translationMatrix(tx, ty, tz) {
     m = createmat4();
     m[0][3] = tx;
     m[1][3] = ty;
-    m[2][3] = tz;    
+    m[2][3] = tz;
     return m;    
 }

@@ -207,14 +207,14 @@ function handlePortal(ghost) {
         spawnInRandomPortal(ghost);
     }
 }
-//The speed of the ghost is supposed to be shalf compared to the avar
+//The speed of the ghost is half compared to the player
 function moveGhostInCurrentDirection(ghost) {
-    ghost.x += ghost.xDirection * (field.speed/2) ;
+    ghost.x += ghost.xDirection * (field.speed/2);
     ghost.z += ghost.zDirection * (field.speed/2);
 }
 
 function spawnInRandomPortal(character) {
-  //FInd  the next portal that is not the curretn portal
+  // Find the next portal that is not the current portal
     const nextPortal = portals.find((p) => p !== character.currentBlock) || portals[0];
     character.currentBlock = nextPortal;
 

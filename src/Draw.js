@@ -6,12 +6,11 @@ function drawModel(angleXX, angleYY, angleZZ,
     // Apply all transformations
 
     mvMatrix = multiplyMat(mvMatrix, translationMatrix(tx, ty, tz));
-    mvMatrix = multiplyMat(mvMatrix, rotationZZMatrix(angleZZ)); //Basically rotating the existing matrice towards z.
-    mvMatrix = multiplyMat(mvMatrix, rotationYYMatrix(angleYY)); // '''''''''''''''''''''''''''''''''''''''''''''''y,
-    mvMatrix = multiplyMat(mvMatrix, rotationXXMatrix(angleXX)); //''''''''''''''''''''''''''''''''''''''''''''''''x
-    mvMatrix = multiplyMat(mvMatrix, scalingMatrix(sx, sy, sz));//Basically scaling the existing matrix or resizing it! 
-    // console.log(mvMatrix);
-    // Passing the Model View Matrix to apply the current transformation
+    mvMatrix = multiplyMat(mvMatrix, rotationZZMatrix(angleZZ)); // Rotate around Z axis
+    mvMatrix = multiplyMat(mvMatrix, rotationYYMatrix(angleYY)); // Rotate around Y axis
+    mvMatrix = multiplyMat(mvMatrix, rotationXXMatrix(angleXX)); // Rotate around X axis
+    mvMatrix = multiplyMat(mvMatrix, scalingMatrix(sx, sy, sz)); // Apply scaling 
+    // Apply transformation matrix
     const mvUniform = gl.getUniformLocation(shaderProgram, "uMVMatrix");
     gl.uniformMatrix4fv(mvUniform, false, new Float32Array(flatten(mvMatrix)));
 
@@ -69,51 +68,36 @@ function drawChar(character, mvMatrix) {
     let localAngleXX = angleXX;
     let localAngleYY = angleYY;
     let localAngleZZ = angleZZ;
-//  Key Valaues: 13 -> Enter
 
-
-
-
-// const possibleMoves = [
-    // console.log("The Directions are x :"+character.xDirection+ "z: "+ character.zDirection);
-    // Use current movement direction; if stationary, try to infer from last key
     let dx = character.xDirection;
     let dz = character.zDirection;
-    // if (dx === 0 && dz === 0 && character.key) {
     switch (character.key) {
         case 37: // 37 -> Left
             dx = -1;
             dz = 0;
-            localAngleYY = 180;
-            localAngleXX = 0;
-            localAngleZZ = 0;
+            // localAngleYY = 0;
+            // mirrorX = true;
             break;
         case 38: // 38 -> Up
             dx = 0;
             dz = 1;
             localAngleYY = 90;
-            localAngleXX = 0;
-            localAngleZZ = 0;
             break;
         case 39: // 39 -> Right
             dx = 1;
             dz = 0;
-            localAngleYY = 0;
-            localAngleXX = 0;
-            localAngleZZ = 0;
+            // localAngleYY = 0;
             break;
         case 40: // 40 -> Down
             dx = 0;
             dz = -1;
             localAngleYY = -90;
-            localAngleXX = 0;
-            localAngleZZ = 0;
             break;
         default:
             break;
     }
-   drawModel(localAngleXX, localAngleYY, localAngleZZ, sx, sy, sz, character.x - (field.width / 2), ty, character.z - (field.height / 2), mvMatrix, texture);
-   
+
+    drawModel(localAngleXX, localAngleYY, localAngleZZ, sx, sy, sz, character.x - (field.width / 2), ty, character.z - (field.height / 2), mvMatrix, texture); 
 }
 
 function getCharacterTexture(character) {

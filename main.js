@@ -4,14 +4,12 @@ let shaderProgram = null;
 let cubeVertexPositionBuffer = null;
 let cubeVertexTextureCoordBuffer = null;
 let cubeVertexIndexBuffer = null;
-let introDelay = false; 
-// let cubeVertexNormalBuffer = null;
+let introDelay = false;
 
 // Global transformations parameters
 let globalTz = -30.0;
 let globalXX = -270.0;
 let globalYY = -1441;
-// let portalPositions = { x : [], z: []};
 
 // Translation vector
 let tx = 0.0;
@@ -19,16 +17,16 @@ const ty = 0.0;
 let tz = 0.0;
 
 // Rotation angles in degrees
-const angleXX = 0.0;
-const angleYY = 0.0;
-const angleZZ = 0.0;
+let angleXX = 0.0;
+let angleYY = 0.0;
+let angleZZ = 0.0;
 // Sounds
 const introSound = new Audio("assets/sounds/start.wav");
 const eatingSound = new Audio("assets/sounds/eatfood.wav");
 const eatGhostSound = new Audio("assets/sounds/pacman_eatghost.wav");
 const deathSound = new Audio("assets/sounds/12.wav");
-const intermissionSound = new Audio("assets/sounds/pacman_intermission.wav"); //Start up song
-const collisionSound = new Audio("assets/sounds/collision_sound.wav"); //When a ghost is being eaten  by Pac man
+const intermissionSound = new Audio("assets/sounds/pacman_intermission.wav"); // Start up song
+const collisionSound = new Audio("assets/sounds/collision_sound.wav"); // When a ghost is eaten by Pac-Man
 
 // Game flags and values
 let started = false;
@@ -42,6 +40,7 @@ let speedCopy = null;
 let counter;
 let counterCopy = null;
 let remainingLives = null;
+let animationFrameId = null; // Store animation frame ID for proper halt
 
 let ghosts = []; 
 let pacman = null;
@@ -103,21 +102,33 @@ function initField() {
 }
 
 function endGame(won, sound) {
-  // Disable keyboard movements and stop pacman
+  // Halt game logic completely
   gameOver = true;
   gameWin = won;
+  
+  // Cancel animation frame to stop rendering
+  if (animationFrameId !== null) {
+    cancelAnimationFrame(animationFrameId);
+    animationFrameId = null;
+  }
+  
+  // Clear any active intervals
+  if (interval !== null) {
+    clearInterval(interval);
+    interval = null;
+  }
+  
+  // Stop all characters
   pacman.updateDirection(0, 0, pacman.key);
-
-  // Disable ghost movements and clear ghosts array
   ghosts.map((ghost) => ghost.updateDirection(0, 0, ghost.key));
   ghosts = [];
 
-  // Update page Data board
-  const result = won ? "YOU WON." : "GAME OVER.";  //Terenary Operator, just like if statement
-  document.getElementById("result").innerHTML = `${result} Score: ${score}`;
+  // Update page data board
+  const result = won ? "🎉 YOU WON! 🎉" : "💀 GAME OVER 💀";
+  document.getElementById("result").innerHTML = `${result}<br>Final Score: ${score}`;
   document.getElementById("score").innerHTML = "";
   document.getElementById("remainingLives").innerHTML = "";
-  // document.getElementById("restart").style.display = "block";
+  document.getElementById("restart").style.display = "block";
 
   // Play death or winning sound
   sound.play();
@@ -128,12 +139,19 @@ function endGame(won, sound) {
 function restartGame() {
   score = 0;
   remainingFood = 0;
-  remainingLives = 1; //Re-instated the value from 3 to 1, for consistency.....
+  remainingLives = 1;
+
+  // Cancel any ongoing animation frame
+  if (animationFrameId !== null) {
+    cancelAnimationFrame(animationFrameId);
+    animationFrameId = null;
+  }
 
   // Restart game infos and super mode timer, if set
   clearInterval(interval);
   document.getElementById("super-mode").innerHTML = "";
   document.getElementById("result").innerHTML = "";
+  document.getElementById("restart").style.display = "none";
 
   // Start game rendering
   initField();
@@ -146,8 +164,10 @@ function restartGame() {
   paused = false;
   speedCopy = null;
   counterCopy = null;
-
-  // lastMoveTime = 0;
+  introDelay = false; // Reset intro delay for new game
+  
+  // Restart the game loop
+  tick();
 }
 
 function enableSuperModeEnv() {
@@ -177,11 +197,17 @@ function sleep(ms) {
 }
 
 async function tick() {
-  requestAnimationFrame(tick); //Every Browser supports this now
+  // Stop requesting frames if game is over
+  if (gameOver) {
+    return;
+  }
+  
+  animationFrameId = requestAnimationFrame(tick); // Store frame ID for cancellation
+  
   // Render the viewport
-  drawScene(); //the async functions ensures that the instructionsin here are run in order and they wait for each other to be done instead of being pipelined..
+  drawScene(); // Async function ensures instructions are run sequentially
   if(!introDelay){
-    await sleep(5000); // This is used to initially pause the game at start time!!!
+    await sleep(5000); // Initial pause at start time
     introDelay = true;
   }
   // Compute new pacman move

@@ -32,7 +32,7 @@ let field_structure = [
     [w, f, f, f, f, f, f, f, f, f, f, f, f, f, f, f, f, f, w],
     [w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w]
 ];
-//  Key Valaues: 13 -> Enter
+//  Key Values: 13 -> Enter
 // 37 -> Left
 // 38 -> Up
 // 39 -> Right
@@ -74,15 +74,11 @@ const field = {
 // Game flags and values
 let remainingFood = 0;
 let portals = [];
-
-// Chars objects
-
-
 let deadGhosts = [];
 
 
-function FieldBlockConstructor(type, xPos, yPos, zPos) {  
-    //This constructor is responsible for populating the maze of the game and handling the co-ordinates system for the maize
+function FieldBlockConstructor(type, xPos, yPos, zPos) {
+    // Constructor for field blocks - manages maze structure and coordinates
     // Block type
     this.type = type;
     // Block coordinates
@@ -93,7 +89,7 @@ function FieldBlockConstructor(type, xPos, yPos, zPos) {
 }
 
 function CharacterConstructor(id) {
-  //This is a character's Constructor for each and every character on the game
+  // Constructor for character objects (Pac-Man and ghosts)
   // Char coordinates
     this.x = 0.0;
     this.z = 0.0;
@@ -147,17 +143,7 @@ function randomCoordinates() {
     } while (field.structure[z][x].type === 'w' || field.structure[z][x].type === 'n');
     return {'x': x - (field.width / 2), 'z': z - (field.height / 2)}
 }
-// function buttonDirect(pacdirect)   //This function was supposed to handle the upfacing of Pacman and changing of direction for texture Mapping
-// {
-//     if(pacdirect === 1) ///Pacman is supposed to go up
-//     {
 
-//     }
-//     if(pacdirect === -1)
-//         {
-            
-//         }
-// }
 function randomCoordinatesGhost() {
     let x, z;
 
@@ -177,20 +163,18 @@ function createFieldStructure(structure) {
 
     // Create field structure
     for (let i = 0; i < height; i++) {
-        // let portalPositions 
         const line = [];
         for (let j = 0; j < width; j++) {
             const fieldBlock = new FieldBlockConstructor(structure[i][j], j, 0, i);
             line.push(fieldBlock);
 
-            // Count food present on field
+            // Count food on field
             if (structure[i][j] === 'f' || structure[i][j] === 's') {
                 remainingFood++;
             }
-            // Save the portal in the portals array
+            // Track portal locations
             if (structure[i][j] === 'p') {
                 portals.push(fieldBlock);
-                // console.log("Portal created at (" + fieldBlock.x + "," + fieldBlock.z + ")");
             }
 
             // Save the spawn block coordinates

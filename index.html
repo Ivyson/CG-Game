@@ -3,31 +3,73 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PacMan 3.0 Webgl</title>
+    <title>PAC-MAN 3D | WebGL Game</title>
     <link rel="stylesheet" href="style.css">
     <link rel="icon" type="image/x-icon" href="/assets/HeaderFav/game.png">
 </head>
 
 <body class="body">
-<div class="logo-div" >
-    <img class="logo" src="assets/164495.gif" alt=""/>
-</div>
 
 <div class="welcome-screen" id="welcome-screen">
-  <span class="welcome-spawn">
-            <strong>INSTRUCTIONS</strong>:
-            <p>1. Use The Arrow Keys To move Around</p>
-            <p>2. The Rotation of Pacman Is currently under maintanance..</p>
-            <p>3. Press the enter key to Pause/Start the Game</p>
-            <p>4. You are presented With just One Live, For simplicity Reasons</p>
-            <p>5. To Read more information about the game, Click: <a href="https://github.com/Ivyson/CG-Game" alt="Ivyson Computer Graphics Game" target="_blank" id="scode">More information </a></p>
-            <p id="Thanks">Thank You for your support</p>
-        </span>
-        <hr>
-    <br/>
-    <br/> <br/><br/>
-    <span class="start-button">Press The Enter Key To Start!</span>
-    <br/>
+    <div class="welcome-wrapper">
+        <div class="left-panel">
+            <div class="logo-box">
+                <img class="logo" src="assets/164495.gif" alt="Pac-Man Logo"/>
+            </div>
+            <div class="game-info">
+                <h1 class="game-title">PAC-MAN</h1>
+                <p class="version-tag">3D WebGL Edition</p>
+                <p class="tagline">Navigate the maze. Escape the ghosts. Dominate the classic.</p>
+            </div>
+        </div>
+        
+        <div class="right-panel">
+            <div class="content-section">
+                <h2 class="section-title">Navigation System</h2>
+                <div class="controls-list">
+                    <div class="control-row">
+                        <span class="control-key">ARROWS</span>
+                        <span class="control-desc">Navigate the maze</span>
+                    </div>
+                    <div class="control-row">
+                        <span class="control-key">ENTER</span>
+                        <span class="control-desc">Pause or resume game</span>
+                    </div>
+                    <div class="control-row">
+                        <span class="control-key">MOUSE</span>
+                        <span class="control-desc">Rotate camera view</span>
+                    </div>
+                    <div class="control-row">
+                        <span class="control-key">SCROLL</span>
+                        <span class="control-desc">Zoom in and out</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="content-section">
+                <h2 class="section-title">Game Objectives</h2>
+                <ul class="objectives-list">
+                    <li>Consume all pellets to achieve victory</li>
+                    <li>Collect power-ups for 12-second invulnerability</li>
+                    <li>Evade four intelligent ghosts</li>
+                    <li>Survive with only one life</li>
+                </ul>
+            </div>
+            
+            <div class="start-container">
+                <button class="play-button">
+                    <span class="play-text">PRESS ENTER TO PLAY</span>
+                    <span class="play-indicator"></span>
+                </button>
+            </div>
+            
+            <div class="footer-links">
+                <a href="https://github.com/Ivyson/CG-Game" target="_blank" class="link-item">GitHub Repository</a>
+                <span class="separator"> |> </span>
+                <span class="link-item">WebGL 3D Graphics</span>
+            </div>
+        </div>
+    </div>
 </div>
 
 <div class="game-window" id="game">
@@ -40,9 +82,10 @@
     <button class="result-button" id="restart" type="button" onclick="restartGame()">Restart Game</button>
     </div>
 </div>
-<div class="win">
+<!-- <div class="win">
     <h1>Well Done!</h1>
 </div>
+<div> This is the demo for now</div> -->
 <script id="shader-vs" type="x-shader/x-vertex">
     precision highp float;
     attribute vec3 aVertexPosition;
@@ -73,6 +116,4 @@
 <script type="text/javascript" src="src/Maize.js"></script>
 <script type="text/javascript" src="src/Movements.js"></script>
 </body>
-
-
 </html>
