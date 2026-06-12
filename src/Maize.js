@@ -170,12 +170,14 @@ function randomCoordinatesGhost() {
 }
 
 function createFieldStructure(structure) {
+  
     const width = structure[0].length;
     const height = structure.length;
     const newField = [];
 
     // Create field structure
     for (let i = 0; i < height; i++) {
+        // let portalPositions 
         const line = [];
         for (let j = 0; j < width; j++) {
             const fieldBlock = new FieldBlockConstructor(structure[i][j], j, 0, i);
@@ -189,7 +191,14 @@ function createFieldStructure(structure) {
             // Save the portal in the portals array
             if (structure[i][j] === 'p') {
                 portals.push(fieldBlock);
-                console.log("Portal created at (" + fieldBlock.x + "," + fieldBlock.z + ")");
+                portalPositions.x.push(fieldBlock.x);
+                portalPositions.z.push(fieldBlock.z);
+                // portalPositions 
+                // Y - element is currently 0 everywhere. So, we can ignore it
+                // console.log("Critical Points: "+portalPositions.z[1]);
+                // console.log("Portal created at (" + fieldBlock.x + "," + fieldBlock.z + ")");
+                // console.log("Portal Instance created :"+ ...portals);
+                // console.log("Portal"+ portals.length);
             }
 
             // Save the spawn block coordinates

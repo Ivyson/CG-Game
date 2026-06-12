@@ -85,6 +85,7 @@ function getCharacterTexture(character) {
 }
 
 function drawField(mvMatrix) {
+  
     for (let i = 0; i < field.height; i++) {
         for (let j = 0; j < field.width; j++) {
             const block = field.structure[i][j];

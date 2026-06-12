@@ -19,17 +19,16 @@ function getShader(gl, id) {
     return (shaderType && shaderSource) ? compileShader(gl, shaderSource, shaderType) : null;
 }
 
+
 function compileShader(gl, source, type) {
     const shader = gl.createShader(type);
     gl.shaderSource(shader, source);
     gl.compileShader(shader);
-
     if (!gl.getShaderParameter(shader, gl.COMPILE_STATUS)) {
         console.error(`Error compiling shader: ${gl.getShaderInfoLog(shader)}`);
         gl.deleteShader(shader);
         return null;
     }
-
     return shader;
 }
 

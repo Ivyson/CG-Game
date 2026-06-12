@@ -100,44 +100,35 @@ function updatePacmanPosition() {
 }
 
 function handlePacmanEating() {
-    if (pacman.currentBlock.type === 's') {
+    const blockType = pacman.currentBlock.type;
 
-        // Only enable super mode if it isn't already enabled
-        if (!superMode) {
-            collisionSound.play();
-            counter = 12;
-            enableSuperModeEnv();
-        } else {
-            // Increment super mode timer counter
-            counter += 12;
+    if (blockType === 's') {
+        collisionSound.play();
+        counter = superMode ? counter + 12 : 12;
+
+        if (superMode) {
             clearInterval(interval);
             interval = null;
-
-            enableSuperModeEnv();
         }
 
-        // Activate super mode
+        enableSuperModeEnv();
         superMode = true;
     }
 
-    // // Eat the food, update score and remaining food
-    if (pacman.currentBlock.type === 'f' || pacman.currentBlock.type === 's') {
-        score += pacman.currentBlock.type === 'f' ? 1 : 5; // f is for normal food else its `s` for supe mode
+    if (blockType === 'f' || blockType === 's') {
+        score += (blockType === 'f') ? 1 : 5;
         pacman.currentBlock.type = '';
         eatingSound.play();
         remainingFood--;
     }
-}
+} 
 
 function moveGhost(ghost) {
     // Check for collisions with pacman
     if (isPacmanCollision(ghost)) {
         if (superMode) {
-            // Kill ghost and eat him
-            // console.log("Ghost killed.....");
             eatGhost(ghost);
         } else {
-            // Lost game
             handleGameLoss();
         }
     }
@@ -148,7 +139,6 @@ function moveGhost(ghost) {
         if (ghost.currentBlock.moves[ghost.key] !== undefined) {
             updateGhostPosition(ghost);
         }
-
         // Stop if it is an invalid move
         if (ghost.currentBlock.moves[ghost.key] === undefined) {
             changeGhostDirectionRandomly(ghost);
@@ -224,26 +214,8 @@ function moveGhostInCurrentDirection(ghost) {
 }
 
 function spawnInRandomPortal(character) {
-    let nextPortal = null;
-
-    // Find a new random portal to spawn, different from the current one
-    let index = 0;
-    do { // I know that we have two portals, at x = 0 and at x = 18, So, 
-        // I can cut the guess game and just check if the current portal is the first one, then spawn in the second one, and vice versa. 
-        // But I wanted to make it more generic, in case we want to add more portals in the future. 
-        // Even if we had more than 2 portals, we still do not need randomisation, we need pairing, 
-        // If user is at portal 1, then spawn in portal 2, if user is at portal 2, then spawn in portal 1, if user is at portal 3, then spawn in portal 4, and so on.
-        // So, we need to implement that kind of pairing instead of randomising. 
-        // Leave the while loop, it may use more resources
-        if (index >= portals.length) {
-            index = 0;
-        }
-        
-        nextPortal = portals[index]; // This is defined in Maize.js line 191. It is an array of all the portals on the field.
-        index++;
-    } while (nextPortal === character.currentBlock && index < portals.length)
-    console.log(character.id + " teleported from portal (" + character.currentBlock.x + "," + character.currentBlock.z + ") to portal (" + nextPortal.x + "," + nextPortal.z + ")");
-    // Change current block to new spawn block
+  //FInd  the next portal that is not the curretn portal
+    const nextPortal = portals.find((p) => p !== character.currentBlock) || portals[0];
     character.currentBlock = nextPortal;
 
     // Update position
@@ -260,9 +232,8 @@ function spawnInRandomPortal(character) {
             character.key = move['key'];
         }
     });
-
     // Enable teleportation
-    character.teleportation = true;
+    // character.teleportation = true;
 }
 
 function reduceLivesAndRespawn() {
