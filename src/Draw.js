@@ -64,7 +64,56 @@ function drawScene() {
 
 function drawChar(character, mvMatrix) {
     const texture = getCharacterTexture(character);
-    drawModel(angleXX, angleYY, angleZZ,  sx, sy, sz,  character.x - (field.width / 2), ty, character.z - (field.height / 2),  mvMatrix,  texture);
+
+    // Compute local rotation so character faces its movement direction
+    let localAngleXX = angleXX;
+    let localAngleYY = angleYY;
+    let localAngleZZ = angleZZ;
+//  Key Valaues: 13 -> Enter
+
+
+
+
+// const possibleMoves = [
+    // console.log("The Directions are x :"+character.xDirection+ "z: "+ character.zDirection);
+    // Use current movement direction; if stationary, try to infer from last key
+    let dx = character.xDirection;
+    let dz = character.zDirection;
+    // if (dx === 0 && dz === 0 && character.key) {
+    switch (character.key) {
+        case 37: // 37 -> Left
+            dx = -1;
+            dz = 0;
+            localAngleYY = 180;
+            localAngleXX = 0;
+            localAngleZZ = 0;
+            break;
+        case 38: // 38 -> Up
+            dx = 0;
+            dz = 1;
+            localAngleYY = 90;
+            localAngleXX = 0;
+            localAngleZZ = 0;
+            break;
+        case 39: // 39 -> Right
+            dx = 1;
+            dz = 0;
+            localAngleYY = 0;
+            localAngleXX = 0;
+            localAngleZZ = 0;
+            break;
+        case 40: // 40 -> Down
+            dx = 0;
+            dz = -1;
+            localAngleYY = -90;
+            localAngleXX = 0;
+            localAngleZZ = 0;
+            break;
+        default:
+            break;
+    }
+   drawModel(localAngleXX, localAngleYY, localAngleZZ, sx, sy, sz, character.x - (field.width / 2), ty, character.z - (field.height / 2), mvMatrix, texture);
+   
 }
 
 function getCharacterTexture(character) {

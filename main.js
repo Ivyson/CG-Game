@@ -42,6 +42,9 @@ let counter;
 let counterCopy = null;
 let remainingLives = null;
 
+let ghosts = []; 
+let pacman = null;
+
 
 function initWebGL(canvas) {
   // Get WebGL context
@@ -118,6 +121,8 @@ function endGame(won, sound) {
   // Play death or winning sound
   sound.play();
 }
+
+
 
 function restartGame() {
   score = 0;

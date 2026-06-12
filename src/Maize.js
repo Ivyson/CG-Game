@@ -76,8 +76,8 @@ let remainingFood = 0;
 let portals = [];
 
 // Chars objects
-let pacman;
-let ghosts = []; //Confirm if these are needed here. Looks like they are not beig used anywhere else
+
+
 let deadGhosts = [];
 
 
@@ -185,11 +185,10 @@ function createFieldStructure(structure) {
             if (structure[i][j] === 'f' || structure[i][j] === 's') {
                 remainingFood++;
             }
-
             // Save the portal in the portals array
             if (structure[i][j] === 'p') {
                 portals.push(fieldBlock);
-                console.log("Portal created at (" + fieldBlock.x + "," + fieldBlock.z + ")");
+            
             }
 
             // Save the spawn block coordinates
